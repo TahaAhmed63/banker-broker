@@ -295,26 +295,33 @@ const Mortageinfo = () => {
     Get_Borrower();
   }, []);
   const [showExp, setShowExp] = useState(0)
-  function handleChange(event) {
+  function handleChange(event,state) {
+    const inputValue = event.target.value;
+    // Remove all non-numeric characters from the input value
+    const numericValue = inputValue.replace(/[^0-9]/g, '');
+    // Format the numeric value using toLocaleString
+    const formattedValue = Number(numericValue).toLocaleString();
+    state(formattedValue);
+
     // alert()
 
-    if (event === "") {
-      return setComfortable_monthly(0)
-    }
+    // if (event === "") {
+    //   return setComfortable_monthly(0)
+    // }
 
-    let syntizievalue = event?.replace(/[$,]/g, "")
+    // let syntizievalue = event?.replace(/[$,]/g, "")
 
 
-    console.log("syntizievalue", Number(syntizievalue))
+    // console.log("syntizievalue", Number(syntizievalue))
 
-    const formattedValue = `$${parseFloat(syntizievalue).toFixed(2)}`;
-    const converted = parseFloat(syntizievalue).toLocaleString("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    });
-    setComfortable_monthly(converted);
+    // const formattedValue = `$${parseFloat(syntizievalue).toFixed(2)}`;
+    // const converted = parseFloat(syntizievalue).toLocaleString("en-US", {
+    //   style: "currency",
+    //   currency: "USD",
+    //   minimumFractionDigits: 2,
+    //   maximumFractionDigits: 2,
+    // });
+    // setComfortable_monthly(converted);
 
 
   }
@@ -618,9 +625,9 @@ const Mortageinfo = () => {
                     <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Where are you in the purchase process?</h5>
                     <div className="input-group126  my-2">
                       <select
-                        className="form-select py-2"
-                        onChange={(e) => setProperty_type(e.target.value)}
-                        value={property_type}
+                        className="form-select py-2 text-primary"
+                        onChange={(e) => setPurchase_process(e.target.value)}
+                        value={purchase_process}
                       >
                         <option selected="" disabled="">
                           Select
@@ -637,7 +644,7 @@ const Mortageinfo = () => {
                   <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>What type of property are you looking?</h5>
                   <div className="input-group126 position-relative my-2">
                     <select
-                      className="form-select py-2"
+                      className="form-select py-2 text-primary"
                       onChange={(e) => setProperty_type(e.target.value)}
                       value={property_type}
                     >
@@ -726,13 +733,26 @@ const Mortageinfo = () => {
                     </h5>
                     <div class="input-group126 position-relative my-2">
                       <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
-                      <input
+                      {/* <input
                         onChange={(e) => setComfortable_monthly(e.target.value)}
                         className="form-control123 m-0 ps-4"
                         type="number"
                         name=""
                         id=""
                         value={comfortable_monthly}
+                      /> */}
+                      <input
+                        onChange={(e) => handleChange(e,setComfortable_monthly)}
+                        className="form-control123 m-0 ps-4"
+                        type="text"
+                        step="0.1"
+                        // min='0'
+                        // max='20'
+                        value={comfortable_monthly}
+                        pattern="^[\d,]+$"
+
+                        name=""
+                        id=""
                       />
                       {bund?.comfortable_monthly_ho_payment
                         ? bund?.comfortable_monthly_ho_payment.map((e) => (
@@ -869,12 +889,17 @@ const Mortageinfo = () => {
                     <div class="input-group126 position-relative my-2">
                       <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
                       <input
+                        onChange={(e) => setPrice_of_property(e.target.value)}
                         className="form-control123 m-0 ps-4"
                         type="number"
-                        inputMode="decimal"
+                        step="0.1"
+                        // min='0'
+                        // max='20'
+                        value={price_of_property}
+                        pattern="^[\d,]+$"
+
+                        name=""
                         id=""
-                        value={Number(price_of_property)}
-                        onChange={(e) => setPrice_of_property(e.target.value)}
                       />
                       {bund?.price_of_property
                         ? bund?.price_of_property.map((e) => (
@@ -1180,7 +1205,7 @@ const Mortageinfo = () => {
                         </div>
                         <div className="position-relative">
                           <input
-                            className="form-control mt-2 w-25 ps-3"
+                            className="form-control mt-2 w-50 ps-3"
                             type="number"
                             name=""
                             id=""
@@ -1215,7 +1240,7 @@ const Mortageinfo = () => {
                           <select
                             formcontrolname="FundsType"
                             name="donpaymentsources"
-                            className="form-control mt-2 ps-3"
+                            className="form-control mt-2 ps-3 text-primary"
                             style={{ fontSize: "16px", fontWeight: "bold", height: "37px", marginTop: "24px" }}
                             onChange={(e) => setDown_Payment_sources(e.target.value)}
                           >
@@ -1468,13 +1493,14 @@ const Mortageinfo = () => {
                         </div>
                         <div className="position-relative">
                           <input
-                            className="form-control mt-2 w-25 ps-3"
+                            className="form-control mt-2 w-50 ps-3"
                             type="number"
                             name=""
                             id=""
                             onChange={(e) =>
                               setDown_Payment_sources_amount(e.target.value)
                             }
+                            value={down_payment}
                           />
                           <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "2px", bottom: "12px", zIndex: "123" }} />
                         </div>
