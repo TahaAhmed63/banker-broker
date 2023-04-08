@@ -3,12 +3,14 @@ import React, { useEffect, useState } from "react";
 import Header from "../../../Layout/Header";
 import Mortageside from "./Mortageside";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Baseurl from "../../../../Baseurl";
 import ProfileInfo from "../Profile/ProfileInfo";
 import { FaBars, FaCheckCircle } from "react-icons/fa";
+import { BiDollar } from "react-icons/bi";
 import { Progress } from "antd";
 import footer from "../../../../Images/footercity.svg";
 
@@ -166,7 +168,7 @@ const Mortageinfo = () => {
     setDown_payment_sources_amount_extra,
   ] = useState("");
   // Getting Values End
-  console.log(real_estate_agent,"real_estate_agent")
+  console.log(real_estate_agent, "real_estate_agent")
   const Data = new FormData();
   Data.append("application_id", Assign_id);
   Data.append("purchase_process", purchase_process);
@@ -192,89 +194,58 @@ const Mortageinfo = () => {
   id && Data.append("id", id);
 
 
-   const Get_Borrower = () => {
-      setLoader(true);
-      // console.log(bund2?.map((e)=>e),"bund2")
-      let token = localStorage.getItem("usertoken");
-      var config = {
-        method: "post",
-        url: `${Baseurl.baseurl}get/mortgage/info`,
-        data: reviewData,
-        headers: {
-          Accept: "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      };
+  const Get_Borrower = () => {
+    setLoader(true);
+    // console.log(bund2?.map((e)=>e),"bund2")
+    let token = localStorage.getItem("usertoken");
+    var config = {
+      method: "post",
+      url: `${Baseurl.baseurl}get/mortgage/info`,
+      data: reviewData,
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    };
 
-      axios(config)
-        .then(function (response) {
-         
-          console.log(response?.data?.data, "get");
-       
-          console.log(response?.data?.data, "res");
-          if (response?.data?.status === true) {
-            setLoader(false);
-            setPurchase_process(response?.data?.data?.purchase_process)
-            setProperty_type(response?.data?.data?.property_type)
-            setDown_percent(response?.data?.data?.down_percent)
-            setComfortable_monthly(response?.data?.data?.comfortable_monthly_ho_payment)
-            setReal_estate_agent(response?.data?.data?.real_estate_agent)
-            setUse_of_property(response?.data?.data?.use_of_property)
-            setPrice_of_property(response?.data?.data?.price_of_property)
-            setDown_Payment(response?.data?.data?.down_payment)
-            setDown_Payment_sources(response?.data?.data?.down_payment_sources)
-            setDown_Payment_sources_amount(response?.data?.data?.down_payment_sources_amount)
-            setOperate_business(response?.data?.data?.operate_business)
-            setAgent_email_id(response?.data?.data?.agent_email_id)
-            setAgent_full_name(response?.data?.data?.agent_full_name)
-            setAgent_cell(response?.data?.data?.agent_cell)
-            setAgent_company(response?.data?.data?.agent_company)
-            setDown_payment_sources_extra(response?.data?.data?.down_payment_sources_extra)
-            down_payment_sources_amount_extra(response?.data?.data?.down_payment_sources_amount_extra)
-                      Setid(response?.data?.data?.id);
+    axios(config)
+      .then(function (response) {
 
-            // setPurchase_process(response?.data?.data?.)
-            // setPurchase_process(response?.data?.data?.)
-            // setPurchase_process(response?.data?.data?.)
-            // setPurchase_process(response?.data?.data?.)
+        console.log(response?.data?.data, "get");
 
-
-
-            Swal.fire({
-              toast: true,
-              icon: "success",
-              title: response?.data?.message,
-              animation: true,
-              position: "top-right",
-              showConfirmButton: false,
-              timer: 3000,
-              timerProgressBar: true,
-              didOpen: (toast) => {
-                toast.addEventListener("mouseenter", Swal.stopTimer);
-                toast.addEventListener("mouseleave", Swal.resumeTimer);
-              },
-            });
-            window.scrollTo({
-              top: 0,
-              behavior: "smooth",
-            });
-          } else {
-            setLoader(false);
-          }
-        })
-        .catch(function (error) {
+        console.log(response?.data?.data, "res");
+        if (response?.data?.status === true) {
           setLoader(false);
-          window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-          setBund(error?.response?.data?.errors);
-          console.log(error, "error");
+          setPurchase_process(response?.data?.data?.purchase_process)
+          setProperty_type(response?.data?.data?.property_type)
+          setDown_percent(response?.data?.data?.down_percent)
+          setComfortable_monthly(response?.data?.data?.comfortable_monthly_ho_payment)
+          setReal_estate_agent(response?.data?.data?.real_estate_agent)
+          setUse_of_property(response?.data?.data?.use_of_property)
+          setPrice_of_property(response?.data?.data?.price_of_property)
+          setDown_Payment(response?.data?.data?.down_payment)
+          setDown_Payment_sources(response?.data?.data?.down_payment_sources)
+          setDown_Payment_sources_amount(response?.data?.data?.down_payment_sources_amount)
+          setOperate_business(response?.data?.data?.operate_business)
+          setAgent_email_id(response?.data?.data?.agent_email_id)
+          setAgent_full_name(response?.data?.data?.agent_full_name)
+          setAgent_cell(response?.data?.data?.agent_cell)
+          setAgent_company(response?.data?.data?.agent_company)
+          setDown_payment_sources_extra(response?.data?.data?.down_payment_sources_extra)
+          down_payment_sources_amount_extra(response?.data?.data?.down_payment_sources_amount_extra)
+          Setid(response?.data?.data?.id);
+
+          // setPurchase_process(response?.data?.data?.)
+          // setPurchase_process(response?.data?.data?.)
+          // setPurchase_process(response?.data?.data?.)
+          // setPurchase_process(response?.data?.data?.)
+
+
 
           Swal.fire({
             toast: true,
-            icon: "error",
-            title: error?.response?.data?.message,
+            icon: "success",
+            title: response?.data?.message,
             animation: true,
             position: "top-right",
             showConfirmButton: false,
@@ -285,8 +256,39 @@ const Mortageinfo = () => {
               toast.addEventListener("mouseleave", Swal.resumeTimer);
             },
           });
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+        } else {
+          setLoader(false);
+        }
+      })
+      .catch(function (error) {
+        setLoader(false);
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
         });
-    };
+        setBund(error?.response?.data?.errors);
+        console.log(error, "error");
+
+        Swal.fire({
+          toast: true,
+          icon: "error",
+          title: error?.response?.data?.message,
+          animation: true,
+          position: "top-right",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
+      });
+  };
 
   // console.log(bund?.address?.map((e,i)=>i),"bund")
   useEffect(() => {
@@ -449,7 +451,7 @@ const Mortageinfo = () => {
   };
 
   console.log(typeof currencyValue, "currencyValue");
-  console.log((down_percent /100)/price_of_property  , "down_percent");
+  console.log((down_percent / 100) / price_of_property, "down_percent");
 
   return (
     <>
@@ -611,34 +613,138 @@ const Mortageinfo = () => {
               }
             >
               <div className="row">
-                <div className="col-md-12">
-                  <div className=" form-label">
-                    <h5>Where are you in the purchase process?</h5>
-                  </div>
-                </div>
-                <div className="form-group mt-4 col-md-6">
-
+                <div className="form-group col-md-8">
                   <div className="row">
-                    <h5 className="mt-4">
-                      What is a comfortable monthly housing payment?
-                    </h5>
-                    <input
-                      onChange={(e) => setComfortable_monthly(e.target.value)}
-                      className="form-control mt-2 dollar_input w-75 ms-2"
-                      type="number"
-                      name=""
-                      id=""
-                      value={comfortable_monthly}
-                    />
-                    {bund?.comfortable_monthly_ho_payment
-                      ? bund?.comfortable_monthly_ho_payment.map((e) => (
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Where are you in the purchase process?</h5>
+                    <div className="input-group126  my-2">
+                      <select
+                        className="form-select py-2"
+                        onChange={(e) => setProperty_type(e.target.value)}
+                        value={property_type}
+                      >
+                        <option selected="" disabled="">
+                          Select
+                        </option>
+                        <option>Just Getting Started</option>
+                        <option>Making Offers</option>
+                        <option>Found a House / Offer Pending</option>
+                        <option>Under Contract</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="row mt-4">
+                  <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>What type of property are you looking?</h5>
+                  <div className="input-group126 position-relative my-2">
+                    <select
+                      className="form-select py-2"
+                      onChange={(e) => setProperty_type(e.target.value)}
+                      value={property_type}
+                    >
+                      <option selected="" disabled="">
+                        Select Property Type
+                      </option>
+                      <option> Other </option>
+                      <option> Manufactured Home </option>
+                      <option> Cooperative </option>
+                      <option> Condominium </option>
+                      <option> 4 Unit </option>
+                      <option> 3 Unit</option>
+                      <option> 2 Unit </option>
+                      <option> Single Family </option>
+                    </select>
+                    {bund?.property_type
+                      ? bund?.property_type.map((e) => (
                         <p className="text-danger">{e}</p>
                       ))
                       : null}
                   </div>
+                  </div>
+                     <div className="row mt-4">
+                     <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>How will you be using this property?</h5>
+                      <div className="d-flex flex-wrap">
+                      <div className="me-0 me-md-3">
+                        <div className="property_radio mx-auto">
+                          <input
+                            label="Primary Residence"
+                            type="radio"
+                            id="male"
+                            name="gender"
+                            defaultValue="Primary Residence"
+                            onChange={(e) => setUse_of_property(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="me-0 me-md-3">
+                        <div className="property_radio mx-auto">
+                          <input
+                            label="Investment"
+                            type="radio"
+                            id="female"
+                            name="gender"
+                            defaultValue="Investment"
+                            onChange={(e) => setUse_of_property(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      <div className="me-0 me-md-3">
+                        <div className="property_radio mx-auto">
+                          <input
+                            label="Second Home"
+                            type="radio"
+                            id="other"
+                            name="gender"
+                            defaultValue="Second Home"
+                            onChange={(e) => setUse_of_property(e.target.value)}
+                          />
+                        </div>
+                      </div>
+                      {bund?.use_of_property
+                        ? bund?.use_of_property.map((e) => (
+                          <p className="text-danger">{e}</p>
+                        ))
+                        : null}
+
+                      <div className="mt-3 d-flex align-items-baseline">
+                        &nbsp; &nbsp;
+                        <input type="checkbox" onChange={IsChecked} />
+                        &nbsp; &nbsp;
+                        <label className="h6 text-muted">
+                          I might also operate my business here
+                        </label>
+                        {bund?.operate_business
+                          ? bund?.operate_business.map((e) => (
+                            <p className="text-danger">{e}</p>
+                          ))
+                          : null}
+                      </div>
+                      </div>
+                     </div>
+                  <div className="row my-4">
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>
+                      What is a comfortable monthly housing payment?
+                    </h5>
+                    <div class="input-group126 position-relative my-2">
+                      <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
+                      <input
+                        onChange={(e) => setComfortable_monthly(e.target.value)}
+                        className="form-control123 m-0 ps-4"
+                        type="number"
+                        name=""
+                        id=""
+                        value={comfortable_monthly}
+                      />
+                      {bund?.comfortable_monthly_ho_payment
+                        ? bund?.comfortable_monthly_ho_payment.map((e) => (
+                          <p className="text-danger">{e}</p>
+                        ))
+                        : null}
+                    </div>
+
+                  </div>
 
                   <div className="row">
-                    <h5 className="mt-5">
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>
                       Are you currently working with a real estate agent?
                     </h5>
 
@@ -651,7 +757,7 @@ const Mortageinfo = () => {
                             id="male"
                             name="agent"
                             value={"yes"}
-                            defaultChecked={real_estate_agent == 1 }
+                            defaultChecked={real_estate_agent == 1}
                             onChange={() => setReal_estate_agent(1)}
                           />
                         </div>
@@ -664,7 +770,7 @@ const Mortageinfo = () => {
                             value={"no"}
 
                             onChange={() => setReal_estate_agent(0)}
-                            defaultChecked={real_estate_agent == 0 }
+                            defaultChecked={real_estate_agent == 0}
                           />
                           {bund?.real_estate_agent
                             ? bund?.real_estate_agent.map((e) => (
@@ -690,7 +796,7 @@ const Mortageinfo = () => {
                             name="agent_email_id"
                             id="agent_email_id"
                             placeholder="Required"
-                            className="form-control text-lowercase col-md-6"
+                            className="form-control text-lowercase col-md-8"
                             value={agent_email_id}
                             onChange={(e) => setAgent_email_id(e.target.value)}
                           />
@@ -755,45 +861,42 @@ const Mortageinfo = () => {
                     ) : null}
                   </div>
 
-                  <div className="row mt-5">
-                    <h5>
+                  <div className="row mt-4">
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>
                       What is the approximate price of the property <br /> you are
                       looking at?
                     </h5>
-                    <input
-                      className="form-control mt-2 ms-2 w-75"
-                      type="number"
-                      inputMode="decimal"
-                      id=""
-                      value={Number(price_of_property)}
-                      onChange={(e) => setPrice_of_property(e.target.value)}
-                    />
-                    {bund?.price_of_property
-                      ? bund?.price_of_property.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
-                      : null}
+                    <div class="input-group126 position-relative my-2">
+                      <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
+                      <input
+                        className="form-control123 m-0 ps-4"
+                        type="number"
+                        inputMode="decimal"
+                        id=""
+                        value={Number(price_of_property)}
+                        onChange={(e) => setPrice_of_property(e.target.value)}
+                      />
+                      {bund?.price_of_property
+                        ? bund?.price_of_property.map((e) => (
+                          <p className="text-danger">{e}</p>
+                        ))
+                        : null}
+                    </div>
                   </div>
+                  {/* shahbaz */}
+                  {/* <div className="row mt-4">
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>How much is your down payment?</h5>
 
-                  <div className="row mt-4">
-                    <h5>How much is your down payment?</h5>
                     <input
-                      className="form-control mt-4 w-50"
+                      className="form-control123 mt-2 w-50"
                       type="number"
                       name=""
                       id=""
                       onChange={(e) => setDown_Payment(e.target.value)}
-                      // defaultValue={down_percent *price_of_property }
+                    defaultValue={down_percent *price_of_property }
                     />
 
-                    {/* <input
-                      className="form-control mt-4 w-25"
-                      type="number"
-                      name=""
-                      id=""
-                      placeholder="ahmed "
-                      onChange={(e) => setDown_percent(e.target.value)}
-                    /> */}
+                  
                     {bund?.down_payment
                       ? bund?.down_payment.map((e) => (
                         <p className="text-danger">{e}</p>
@@ -804,12 +907,15 @@ const Mortageinfo = () => {
                         <p className="text-danger">{e}</p>
                       ))
                       : null}
-                  </div>
+                  </div> */}
+                  {/* shahbaz */}
 
-                  <div className="row mt-4">
-                    <h5>Down payment source(s) and amount</h5>
+                  {/* shahbaz */}
+                  {/* <div className="row mt-4 ms-0">
+                    <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Down payment source(s) and amount</h5>
+                    <div className="input-group126 position-relative my-2"></div>
                     <select
-                      className=" form-select py-2"
+                      className="form-select py-2"
                       onChange={(e) => setPurchase_process(e.target.value)}
                       value={purchase_process}
                     >
@@ -826,47 +932,19 @@ const Mortageinfo = () => {
                         <p className="text-danger">{e}</p>
                       ))
                       : null}
-                  </div>
+                  </div> */}
+                  {/* shahbaz */}
+
                 </div>
-                <div className="row mt-5">
-                  <div className="col-md-12">
-                    <div className=" form-label">
-                      <h5>What type of property are you looking?</h5>
+                
+                <div className="row mt-4">
+                  {/* <div className="col-md-12">
+                    <div className="form-label">
+                      <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>How will you be using this property?</h5>
                     </div>
-                  </div>
-                  <div className="form-group mt-4 col-md-6">
-                    <select
-                      className="form-select py-2"
-                      onChange={(e) => setProperty_type(e.target.value)}
-                      value={property_type}
-                    >
-                      <option selected="" disabled="">
-                        Select Property Type
-                      </option>
-                      <option> Other </option>
-                      <option> Manufactured Home </option>
-                      <option> Cooperative </option>
-                      <option> Condominium </option>
-                      <option> 4 Unit </option>
-                      <option> 3 Unit</option>
-                      <option> 2 Unit </option>
-                      <option> Single Family </option>
-                    </select>
-                    {bund?.property_type
-                      ? bund?.property_type.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
-                      : null}
-                  </div>
-                </div>
-                <div className="row mt-5">
-                  <div className="col-md-12">
-                    <div className=" form-label">
-                      <h5>How will you be using this property?</h5>
-                    </div>
-                  </div>
-                  <div className="form-group mt-2 col-md-8">
-                    <div className="d-flex flex-wrap">
+                  </div> */}
+                  <div className="form-group  col-md-8">
+                    {/* <div className="d-flex flex-wrap">
                       <div className="me-0 me-md-3">
                         <div className="property_radio mx-auto">
                           <input
@@ -922,34 +1000,32 @@ const Mortageinfo = () => {
                           ))
                           : null}
                       </div>
-                    </div>
-
-                    <div className="row">
+                    </div> */}
+                    {/* shahbaz */}
+                    {/* <div className="row">
                       <h5 className="mt-4">
                         What is a comfortable monthly housing payment?
                       </h5>
                       <input
                         onChange={(e) => handleChange(e.target.value)}
-                        className="form-control mt-2 dollar_input w-75 ms-2"
+                        className="form-control mt-2 inputWidth266"
                         type="text"
                         step="0.1"
-                        // min='0'
-                        // max='20'
                         value={comfortable_monthly}
                         pattern="^[\d,]+$"
-
                         name=""
                         id=""
                       />
-                      {/* <h1>{comfortable_monthly}</h1> */}
                       {bund?.comfortable_monthly_ho_payment
                         ? bund?.comfortable_monthly_ho_payment.map((e) => (
                           <p className="text-danger">{e}</p>
                         ))
                         : null}
-                    </div>
+                    </div> */}
+                    {/* shahbaz */}
 
-                    <div className="row">
+                    {/* shahbaz */}
+                    {/* <div className="row">
                       <h5 className="mt-5">
                         Are you currently working with a real estate agent?
                       </h5>
@@ -1059,9 +1135,11 @@ const Mortageinfo = () => {
                             : null}
                         </div>
                       ) : null}
-                    </div>
+                    </div> */}
+                    {/* shahbaz */}
 
-                    <div className="row mt-5">
+                    {/* shahbaz */}
+                    {/* <div className="row mt-5">
                       <h5>
                         What is the approximate price of the property <br /> you are
                         looking at?
@@ -1079,33 +1157,45 @@ const Mortageinfo = () => {
                           <p className="text-danger">{e}</p>
                         ))
                         : null}
-                    </div>
+                    </div> */}
+                    {/* shahbaz */}
+
 
                     <div className="row mt-4 align-items-baseline">
-                      <h5>How much is your down payment?</h5>
-                      <input
-                        className="form-control mt-4 w-50"
-                        type="number"
-                        name=""
-                        id=""
-                        value={down_payment}
-                        onChange={(e) => {
-                          setDown_percent(Number(e.target.value) / Number(price_of_property) * 100  )
-                          setDown_Payment(e.target.value)}}
-                      />
+                      <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>How much is your down payment?</h5>
+                      <div className="d-flex align-items-center">
+                        <div className="input-group126 position-relative">
+                          <BiDollar style={{ fontSize: "16px", fontWeight: "600", position: "absolute", left: "1px", bottom: "11px", zIndex: "123" }} />
+                          <input
+                            className="form-control mt-2 ps-3"
+                            type="number"
+                            name=""
+                            id=""
+                            value={down_payment}
+                            onChange={(e) => {
+                              setDown_percent(Number(e.target.value) / Number(price_of_property) * 100)
+                              setDown_Payment(e.target.value)
+                            }}
+                          />
+                        </div>
+                        <div className="position-relative">
+                          <input
+                            className="form-control mt-2 w-25 ps-3"
+                            type="number"
+                            name=""
+                            id=""
+                            value={down_percent}
+                            // defaultValue={ Number(price_of_property ) / Number(down_payment ) }
+                            onChange={(e) => {
+                              setDown_Payment((e.target.value / 100) * price_of_property)
 
-                      <input
-                        className="form-control mt-4 w-25"
-                        type="number"
-                        name=""
-                        id=""
-                        value={down_percent}
-                        // defaultValue={ Number(price_of_property ) / Number(down_payment ) }
-                        onChange={(e) => {
-                          setDown_Payment((e.target.value / 100) * price_of_property )
+                              setDown_percent(e.target.value)
+                            }}
+                          />
+                          <span style={{ fontSize: "15px", fontWeight: "600", position: "absolute", left: "4px", bottom: "8px" }}>%</span>
+                        </div>
+                      </div>
 
-                          setDown_percent(e.target.value)}}
-                      />  %
                       {bund?.down_payment
                         ? bund?.down_payment.map((e) => (
                           <p className="text-danger">{e}</p>
@@ -1119,269 +1209,276 @@ const Mortageinfo = () => {
                     </div>
 
                     <div className="row mt-4">
-                      <h5>Down payment source(s) and amount</h5>
-                      <select
-                        formcontrolname="FundsType"
-                        name="donpaymentsources"
-                        className="form-control select1 ng-tns-c161-6 ng-untouched ng-pristine ng-valid w-50 py-2"
-                        style={{ height: "37px", marginTop: "24px" }}
-                        onChange={(e) => setDown_Payment_sources(e.target.value)}
-                      >
-                        <option
-                          selected=""
-                          disabled=""
-                          className="ng-tns-c161-6 ng-star-inserted"
-                        >
-                          Select
-                        </option>
+                      <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Down payment source(s) and amount</h5>
+                      <div className="d-flex align-items-center">
+                        <div class="input-group126 position-relative">
+                          <select
+                            formcontrolname="FundsType"
+                            name="donpaymentsources"
+                            className="form-control mt-2 ps-3"
+                            style={{ fontSize: "16px", fontWeight: "bold", height: "37px", marginTop: "24px" }}
+                            onChange={(e) => setDown_Payment_sources(e.target.value)}
+                          >
+                            <option
+                              selected=""
+                              disabled=""
+                              className="ng-tns-c161-6 ng-star-inserted"
+                            >
+                              Select
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="CheckingSavings"
-                        >
-                          Checking/Savings
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CheckingSavings"
+                            >
+                              Checking/Savings
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="GiftFunds"
-                        >
-                          Gift
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="GiftFunds"
+                            >
+                              Gift
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="StocksAndBonds"
-                        >
-                          Stocks and Bonds
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="StocksAndBonds"
+                            >
+                              Stocks and Bonds
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="EquityOnSoldProperty"
-                        >
-                          Equity On Sold Property
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnSoldProperty"
+                            >
+                              Equity On Sold Property
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="EquityOnPendingSale"
-                        >
-                          Equity from Pending Sale of Property
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnPendingSale"
+                            >
+                              Equity from Pending Sale of Property
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="EquityOnSubjectProperty"
-                        >
-                          Equity from Subject Property
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnSubjectProperty"
+                            >
+                              Equity from Subject Property
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="Other"
-                        >
-                          Other funds source
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Other"
+                            >
+                              Other funds source
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="BridgeLoan"
-                        >
-                          Bridge Loan
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="BridgeLoan"
+                            >
+                              Bridge Loan
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="CashOnHand"
-                        >
-                          Cash On Hand
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CashOnHand"
+                            >
+                              Cash On Hand
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="CashOrOtherEquity"
-                        >
-                          Cash Or Other Equity
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CashOrOtherEquity"
+                            >
+                              Cash Or Other Equity
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="Contribution"
-                        >
-                          Contribution
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Contribution"
+                            >
+                              Contribution
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="CreditCard"
-                        >
-                          Credit Card
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CreditCard"
+                            >
+                              Credit Card
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="DepositOnSalesContract"
-                        >
-                          Deposit On Sales Contract
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="DepositOnSalesContract"
+                            >
+                              Deposit On Sales Contract
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="ExcessDeposit"
-                        >
-                          Excess Deposit
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="ExcessDeposit"
+                            >
+                              Excess Deposit
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="ForgivableSecuredLoan"
-                        >
-                          Forgivable Secured Loan
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="ForgivableSecuredLoan"
+                            >
+                              Forgivable Secured Loan
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="Grant"
-                        >
-                          Grant
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Grant"
+                            >
+                              Grant
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="HousingRelocation"
-                        >
-                          Housing Relocation
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="HousingRelocation"
+                            >
+                              Housing Relocation
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="LifeInsuranceCashValue"
-                        >
-                          Life Insurance Cash Value
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="LifeInsuranceCashValue"
+                            >
+                              Life Insurance Cash Value
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="LotEquity"
-                        >
-                          LotEquity
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="LotEquity"
+                            >
+                              LotEquity
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="19: MortgageCreditCertificates"
-                        >
-                          Mortgage Credit Certificates
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="19: MortgageCreditCertificates"
+                            >
+                              Mortgage Credit Certificates
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="MortgageRevenueBond"
-                        >
-                          Mortgage Revenue Bond
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="MortgageRevenueBond"
+                            >
+                              Mortgage Revenue Bond
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="OtherEquity"
-                        >
-                          Other Equity
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="OtherEquity"
+                            >
+                              Other Equity
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="PledgedCollateral"
-                        >
-                          Pledged Collateral
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="PledgedCollateral"
+                            >
+                              Pledged Collateral
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="PremiumFunds"
-                        >
-                          Premium Funds
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="PremiumFunds"
+                            >
+                              Premium Funds
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="RentWithOptionToPurchase"
-                        >
-                          Rent With Option To Purchase
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="RentWithOptionToPurchase"
+                            >
+                              Rent With Option To Purchase
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="RetirementFunds"
-                        >
-                          Retirement Funds
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="RetirementFunds"
+                            >
+                              Retirement Funds
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="SaleOfChattel"
-                        >
-                          Sale Of Chattel
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SaleOfChattel"
+                            >
+                              Sale Of Chattel
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="SalesPriceAdjustment"
-                        >
-                          Sales Price Adjustment
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SalesPriceAdjustment"
+                            >
+                              Sales Price Adjustment
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="SecondaryFinancing"
-                        >
-                          Secondary Financing
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SecondaryFinancing"
+                            >
+                              Secondary Financing
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="SecuredLoan"
-                        >
-                          Secured Loan
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SecuredLoan"
+                            >
+                              Secured Loan
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="30: SweatEquity"
-                        >
-                          Sweat Equity
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="30: SweatEquity"
+                            >
+                              Sweat Equity
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="TradeEquity"
-                        >
-                          Trade Equity
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="TradeEquity"
+                            >
+                              Trade Equity
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="TrustFunds"
-                        >
-                          Trust Funds
-                        </option>
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="TrustFunds"
+                            >
+                              Trust Funds
+                            </option>
 
-                        <option
-                          className="ng-tns-c161-6 ng-star-inserted"
-                          value="UnsecuredBorrowedFunds"
-                        >
-                          Unsecured Borrowed Funds
-                        </option>
-                      </select>
-                      <input
-                        className="form-control mt-4 w-25"
-                        type="number"
-                        name=""
-                        id=""
-                        onChange={(e) =>
-                          setDown_Payment_sources_amount(e.target.value)
-                        }
-                      />
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="UnsecuredBorrowedFunds"
+                            >
+                              Unsecured Borrowed Funds
+                            </option>
+                          </select>
+                        </div>
+                        <div className="position-relative">
+                          <input
+                            className="form-control mt-2 w-25 ps-3"
+                            type="number"
+                            name=""
+                            id=""
+                            onChange={(e) =>
+                              setDown_Payment_sources_amount(e.target.value)
+                            }
+                          />
+                          <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "2px", bottom: "12px", zIndex: "123" }} />
+                        </div>
+                      </div>
                       {bund?.down_payment_sources
                         ? bund?.down_payment_sources.map((e) => (
                           <p className="text-danger">{e}</p>
@@ -1397,7 +1494,277 @@ const Mortageinfo = () => {
                     <div className="row mt-2">
                       {hide ? (
                         <>
+                       <div className="d-flex align-items-center">
+                        <div class="input-group126 position-relative">
+                          <select
+                            formcontrolname="FundsType"
+                            name="donpaymentsources"
+                            className="form-control mt-2 ps-3"
+                            style={{ fontSize: "16px", fontWeight: "bold", height: "37px", marginTop: "24px" }}
+                            onChange={(e) =>setDown_payment_sources_extra(e.target.value)}
+                          >
+                            <option
+                              selected=""
+                              disabled=""
+                              className="ng-tns-c161-6 ng-star-inserted"
+                            >
+                              Select
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CheckingSavings"
+                            >
+                              Checking/Savings
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="GiftFunds"
+                            >
+                              Gift
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="StocksAndBonds"
+                            >
+                              Stocks and Bonds
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnSoldProperty"
+                            >
+                              Equity On Sold Property
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnPendingSale"
+                            >
+                              Equity from Pending Sale of Property
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="EquityOnSubjectProperty"
+                            >
+                              Equity from Subject Property
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Other"
+                            >
+                              Other funds source
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="BridgeLoan"
+                            >
+                              Bridge Loan
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CashOnHand"
+                            >
+                              Cash On Hand
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CashOrOtherEquity"
+                            >
+                              Cash Or Other Equity
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Contribution"
+                            >
+                              Contribution
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="CreditCard"
+                            >
+                              Credit Card
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="DepositOnSalesContract"
+                            >
+                              Deposit On Sales Contract
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="ExcessDeposit"
+                            >
+                              Excess Deposit
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="ForgivableSecuredLoan"
+                            >
+                              Forgivable Secured Loan
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="Grant"
+                            >
+                              Grant
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="HousingRelocation"
+                            >
+                              Housing Relocation
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="LifeInsuranceCashValue"
+                            >
+                              Life Insurance Cash Value
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="LotEquity"
+                            >
+                              LotEquity
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="19: MortgageCreditCertificates"
+                            >
+                              Mortgage Credit Certificates
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="MortgageRevenueBond"
+                            >
+                              Mortgage Revenue Bond
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="OtherEquity"
+                            >
+                              Other Equity
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="PledgedCollateral"
+                            >
+                              Pledged Collateral
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="PremiumFunds"
+                            >
+                              Premium Funds
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="RentWithOptionToPurchase"
+                            >
+                              Rent With Option To Purchase
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="RetirementFunds"
+                            >
+                              Retirement Funds
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SaleOfChattel"
+                            >
+                              Sale Of Chattel
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SalesPriceAdjustment"
+                            >
+                              Sales Price Adjustment
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SecondaryFinancing"
+                            >
+                              Secondary Financing
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="SecuredLoan"
+                            >
+                              Secured Loan
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="30: SweatEquity"
+                            >
+                              Sweat Equity
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="TradeEquity"
+                            >
+                              Trade Equity
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="TrustFunds"
+                            >
+                              Trust Funds
+                            </option>
+
+                            <option
+                              className="ng-tns-c161-6 ng-star-inserted"
+                              value="UnsecuredBorrowedFunds"
+                            >
+                              Unsecured Borrowed Funds
+                            </option>
+                          </select>
+                        </div>
+                        <div className="position-relative">
                           <input
+                            className="form-control mt-2 w-25 ps-3"
+                            type="number"
+                            name=""
+                            id=""
+                            onChange={(e) =>
+                              setDown_payment_sources_amount_extra(e.target.value)
+                            }
+                          />
+                          <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "2px", bottom: "12px", zIndex: "123" }} />
+                        </div>
+                      </div>
+
+                          {/* <input
                             className="form-control mt-4 w-50"
                             type="number"
                             name=""
@@ -1414,8 +1781,8 @@ const Mortageinfo = () => {
                             id=""
                             onChange={(e) =>
                               setDown_payment_sources_amount_extra(e.target.value)
-                            }
                           />
+                            } */}
                           {bund?.down_payment_sources_extra
                             ? bund?.down_payment_sources_extra.map((e) => (
                               <p className="text-danger">{e}</p>
@@ -1456,8 +1823,8 @@ const Mortageinfo = () => {
                   </div>
                 </div>
               </div>
-                <div className="border-bottom" ></div>
-                <img src={footer} alt="img" width="96%"/>
+              <div className="border-bottom" ></div>
+              <img src={footer} alt="img" width="96%" />
             </div>
             <ProfileInfo />
           </div>

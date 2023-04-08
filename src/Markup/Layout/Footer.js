@@ -4,7 +4,7 @@ import footerlogo from '../../Images/footer-logo.svg'
 const Footer = () => {
   return (
     <>
-      <footer className="main-footer pt-3 fixed-bottom d-flex justify-content-between align-items-center bg-white flex-wrap">
+      <footer style={{margin:"0"}} className="main-footer pt-3 px-0 fixed-bottom d-flex justify-content-between align-items-center bg-white flex-wrap">
         <div className="footer-left">
             <ul className="d-flex">
                 <li>Privacy Policy</li>

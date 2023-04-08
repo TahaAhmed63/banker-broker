@@ -11,8 +11,10 @@ const Logout = (props) => {
   };
   return (
     <>
-      <Link className={props.classes}  to={"#"} onClick={() => out()}>
-      &nbsp; <AiOutlineLogout/>&nbsp;  Logout 
+      <Link  to={"#"} onClick={() => out()}>
+        <button className="btn btn-primary">
+          &nbsp; <AiOutlineLogout />&nbsp;  Logout
+        </button>
       </Link>
     </>
   );
