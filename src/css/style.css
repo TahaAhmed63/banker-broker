@@ -2426,6 +2426,12 @@ label.btn.no1.px-3.py-2:hover {
   font-weight: 500;
 }
 
+
+select option {
+  margin: 40px;
+  background: rgba(255, 254, 254, 0) !important;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
 #current-lft7{
   margin-left: -12px;
 }
@@ -2621,20 +2627,23 @@ label.btn.no1.px-3.py-2:hover {
   outline: transparent !important;
   text-transform: uppercase;
   color: #4584fe;
-  padding-left: 15px;
+  padding-left: 20px;
   background-color: white;
   width: 24vh;
   font-weight: 700;
+
+  
 }
+
 
 #add-income-slt1{
   position: absolute;
   transform: translate3d(0px, 47px, 0px);
   top: 0px;
   left: 0px;
-  padding-left: 95px;
+  padding-left: 30px;
   will-change: transform;
-  width: 303px !important;
+  width: 160px !important;
 }
 
 
