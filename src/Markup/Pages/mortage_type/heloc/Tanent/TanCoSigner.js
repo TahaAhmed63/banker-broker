@@ -127,6 +127,27 @@ function TanCoSigner() {
   useEffect(() => {
     postData();
   }, []);
+
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
+
+
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggle = () => {
@@ -790,11 +811,11 @@ function TanCoSigner() {
                         Phone
                         </span>
                         <input
-                          type="number"
-                          id="f-width1"
-                          class="form-control "
+                          type="tel"
+                          class="form-control rounded-0 input26clr"
                           placeholder="required"
-                          onChange={(e) => setCob_phone(e.target.value)}
+                          onChange={(e) => handlePhoneNumberChange(e, setCob_phone)}
+                          value={cob_phone}
                         />{" "}
                       </div>
 
@@ -890,11 +911,11 @@ function TanCoSigner() {
                             Phone
                             </span>
                             <input
-                              type="number"
-                              id="f-width1"
-                              class="form-control "
+                              type="tel"
+                              class="form-control rounded-0 input26clr"
                               placeholder="required"
-                              onChange={(e) => setSp_phone(e.target.value)}
+                              onChange={(e) => handlePhoneNumberChange(e, setSp_phone)}
+                              value={sp_phone}
                             />{" "}
                           </div>
 

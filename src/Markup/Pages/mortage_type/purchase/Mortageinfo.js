@@ -888,10 +888,23 @@ const Mortageinfo = () => {
                     </h5>
                     <div class="input-group126 position-relative my-2">
                       <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
-                      <input
+                      {/* <input
                         onChange={(e) => setPrice_of_property(e.target.value)}
                         className="form-control123 m-0 ps-4"
                         type="number"
+                        step="0.1"
+                        // min='0'
+                        // max='20'
+                        value={price_of_property}
+                        pattern="^[\d,]+$"
+
+                        name=""
+                        id=""
+                      /> */}
+                      <input
+                        onChange={(e) => handleChange(e,setPrice_of_property)}
+                        className="form-control123 m-0 ps-4"
+                        type="text"
                         step="0.1"
                         // min='0'
                         // max='20'
@@ -1198,21 +1211,24 @@ const Mortageinfo = () => {
                             id=""
                             value={down_payment}
                             onChange={(e) => {
-                              setDown_percent(Number(e.target.value) / Number(price_of_property) * 100)
+                              setDown_percent(Number(e.target.value) / Number(price_of_property.replaceAll(",","")) * 100)
                               setDown_Payment(e.target.value)
+                              console.log(Number((e.target.value / 100)) * Number(price_of_property.replaceAll(",","")))
+
                             }}
                           />
                         </div>
                         <div className="position-relative">
                           <input
                             className="form-control mt-2 w-50 ps-3"
-                            type="number"
+                            type="text"
                             name=""
                             id=""
                             value={down_percent}
                             // defaultValue={ Number(price_of_property ) / Number(down_payment ) }
                             onChange={(e) => {
-                              setDown_Payment((e.target.value / 100) * price_of_property)
+                              setDown_Payment(Number((e.target.value / 100)) * Number(price_of_property.replaceAll(",","")));
+                              // console.log(Number((e.target.value / 100)) * Number(price_of_property.replaceAll(",","")))
 
                               setDown_percent(e.target.value)
                             }}
@@ -1833,7 +1849,7 @@ const Mortageinfo = () => {
                       <label className="h6 text-primary mt-2">
                         Your loan amount will be
                       </label>
-                      <h2 className="text-primary bold">{price_of_property - down_payment}</h2>
+                      <h2 className="text-primary bold">{ Number(price_of_property?.replaceAll(",","")) - Number(down_payment)}</h2>
 
                       <label className="text-secondary h6">
                         Next is <span className="text-dark">Personal Info</span>
