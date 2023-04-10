@@ -471,6 +471,11 @@ a:hover {
   color: #84befd !important;
   border-color: #84befd !important;
 }
+
+.btnColorhv266:hover{
+  color: #84befd !important;
+  border-color: #84befd !important;
+}
 /* personal info css start */
 
 /* mortgage radio button css */
@@ -515,9 +520,9 @@ a:hover {
 
 
 @media (min-width: 768px) {
-  .personalinfo_maxwidth {
+  /* .personalinfo_maxwidth {
     max-width: 65% !important;
-}
+} */
 
 .footerimage3 img {
   width: 83%;
@@ -1621,9 +1626,9 @@ alternate {
 }
 .form-control123 {
   display: block;
-  width: 95%;
+  width: 100%;
   height: calc(1.5em + 0.75rem + 2px);
-  padding: 0.375rem 0.75rem;
+  /* padding: 0.375rem 0.75rem; */
   font-size: 1rem;
   font-weight: 400;
   /* line-height: 1.5; */
@@ -1717,12 +1722,22 @@ alternate {
   outline: 0;
   box-shadow: none !important;
 }
+.form-control123:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: none !important;
+}
 
 .input-group > *:first-child {
   border-radius: 0;
 }
 
 .form-control input:hover {
+  border: #80bdff;
+}
+.form-control123 input:hover {
   border: #80bdff;
 }
 
@@ -1762,6 +1777,23 @@ alternate {
   color: #84befd !important;
   border-color: #84befd !important;
 }
+.form-control123{
+background-color: #bdc1c559;;
+}
+
+.form-control123:hover {
+  color: #84befd !important;
+  border-color: #84befd !important;
+  background-color: #84befd41 !important;
+}
+.formCotNew123:hover {
+  color: #84befd !important;
+  border-color: #84befd !important;
+  background-color: #84befd41 !important;
+}
+
+
+
 
 .land_fname {
   font-size: 10px !important;
