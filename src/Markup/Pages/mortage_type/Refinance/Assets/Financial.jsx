@@ -19,6 +19,7 @@ return (
                     type="number"
                     className="form-control rounded-0 hinpt"
                     value={finalInstitute}
+                    max="9"
                     placeholder="Required"
                     onChange={(e) => setFinalInstitute((perv)=>({...perv,finalInstitute:(e.target.value)}))}
                   />
