@@ -242,59 +242,58 @@ const Mortage = () => {
         <div className="container">
           <div className="row mb-5 pt-4">
             <div className="card custom_card mt-5 py-4 w-90 mx-auto px-5">
-              <h3 className="text-center mt-3">Please Select your Option</h3>
-              <div className="container">
-                <div className="row my-5">
-                  <div className="col-md-4">
+              <h3 className="text-center mt-2">Please Select your Option</h3>
+                <div className="row  justify-content-center">
+                  <div className="col-md-3 my-3">
                     <div
-                      className="card cardes rounded "
+                      className="card cardes rounded py-4"
                       onClick={() => GettingidPurchase()}
                       style={{ cursor: "pointer" }}
                     >
-                      <div className="text-center">
+                      <div className="d-flex flex-column align-items-center justify-content-center h-100">
                         <img
                           src={icon}
                           alt=""
-                          width={"40%"}
-                          height={"100%"}
+                          width={"35%"}
+                          // height={"100%"}
                           className="text-center "
                         />
-                        <h5 className="mb-4 text-black">Purchase</h5>
+                        <h6 className="text-black">Purchase</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3 my-3">
                     <div
-                      className="card cardes rounded"
+                      className="card cardes rounded py-4"
                       onClick={() => GettingidRef()}
                     >
-                      <div className="text-center">
+                      <div className="d-flex flex-column align-items-center justify-content-center h-100">
                         <img
                           src={icon}
                           alt=""
-                          width={"40%"}
-                          height={"100%"}
+                          width={"35%"}
+                          // height={"100%"}
                           className="text-center "
                         />
-                        <h5 className="mb-4  text-black">Refinance</h5>
+                        <h6 className="text-black">Refinance</h6>
                       </div>
                     </div>
                   </div>
-                  <div className="col-md-4">
+                  <div className="col-md-3 my-3">
                     <Link>
                       <div
-                        className="card cardes rounded"
+                        className="card cardes rounded py-4"
                         onClick={() => GettingidTanent()}
                       >
-                        <div className="text-center">
+                        <div className="d-flex flex-column align-items-center justify-content-center h-100">
                           <img
                             src={icon}
                             alt=""
-                            width={"40%"}
-                            height={"100%"}
+                            width={"35%"}
+                            // height={"100%"}
                             className="text-center "
                           />
-                          <h5 className="mb-4  text-black">Heloc</h5>
+                          <h6 className="text-black">Heloc</h6>
                         </div>
                       </div>
                     </Link>
@@ -307,12 +306,11 @@ const Mortage = () => {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
-      </section>
       <Footer />
+      </section>
     </>
   );
 };

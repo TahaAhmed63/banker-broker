@@ -10,61 +10,67 @@ const Borrower_types = () => {
   return (
     <>
       <Header />
-      <section className="bor_types h-86">
-        <div className="container" style={{marginTop: "-3rem"}}>
-          <div className="row mt-3 pt-4">
-            <div className="card custom_card mt-5 w-90 mx-auto px-5">
-              <h3 className="text-center mt-3">Please Select your Option</h3>
-              <div className="container">
-                <div className="row my-5">
-                  <div className="col-md-4 mt-3 mt-md-0">
+      <section className="bor_types d-flex justify-content-center align-items-center">
+        <div className="container" >
+          <div className="row mt-3 py-4">
+            <div className="card custom_card mt-3 mb-4 mt-lg-5 w-90 mx-auto align-items-center px-5">
+              <h3 style={{fontSize:"24px", fontWeight:"500"}} className="text-center my-4 text-dark">Please Select your Option</h3>
+                <div className="row  justify-content-center">
+
+
+                  <div className="col-md-3 my-3 mt-md-0">
                     <Link to={"/new_mortage"}>
-                      <div className="card cardes  ">
-                        <div className="text-center">
+                      <div  className="card cardes py-4">
+                        <div className="d-flex flex-column align-items-center justify-content-center h-100">
                           <img
                             src={icon}
                             alt=""
-                            width={"40%"}
-                            height={"100%"}
+                            width={"35%"}
+                            // height={"100%"}
                             className="text-center "
                           />
-                          <h5 className="mb-4 text-black">Mortgage</h5>
+                          <h6 className="text-black">Mortgage</h6>
                         </div>
                       </div>
                     </Link>
                   </div>
-                  <div className="col-md-4 mt-3 mt-md-0">
+                  <div  className="col-md-3 my-3 mt-md-0">
                     <Link to={"#"}>
-                      <div className="card cardes rounded">
-                        <div className="text-center">
+                    <div style={{width:"100%",height:"100%"}} className="card cardes py-4">
+                        <div className="d-flex flex-column align-items-center justify-content-center h-100">
                           <img
                             src={icon}
                             alt=""
-                            width={"40%"}
-                            height={"100%"}
+                            width={"35%"}
+                            // height={"100%"}
                             className="text-center "
                           />
-                          <h5 className="mb-4  text-black">Real State</h5>
+                          <h6 className="text-black">Real State</h6>
                         </div>
                       </div>
                     </Link>
                   </div>
-                  <div className="col-md-4 mt-3 mt-md-0">
+
+                  <div  className="col-md-3 my-3 mt-md-0">
                     <Link  to={"#"}>
-                      <div className="card cardes rounded">
-                        <div className="text-center">
+                    <div style={{width:"100%",height:"100%"}} className="card cardes py-4">
+                        <div className="d-flex flex-column align-items-center justify-content-center h-100">
                           <img
                             src={icon}
                             alt=""
-                            width={"40%"}
-                            height={"100%"}
+                            width={"35%"}
+                            // height={"100%"}
                             className="text-center "
                           />
-                          <h5 className="mb-4  text-black">Insurance</h5>
+                          <h6 className="text-black">Insurance</h6>
                         </div>
                       </div>
                     </Link>
                   </div>
+
+
+
+
                 </div>
                 <div className="row">
                   <div className="col-md-12 mb-5">
@@ -73,12 +79,11 @@ const Borrower_types = () => {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
           </div>
+      <Footer/>
         </div>
       </section>
-      <Footer/>
     </>
   );
 };
