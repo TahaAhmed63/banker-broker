@@ -620,7 +620,7 @@ const Mortageinfo = () => {
                 : ""
             }
           >
-          <div style={{width:"80%"}} className="row mx-4">
+          <div style={{width:"95%"}} className="row mx-4">
               <h5 className="font26 mb-3 p-md-0" style={{fontSize:"20px", fontWeight:"500", color:"black"}}>Please fill your full, legal name</h5>
               <div className="col-lg-3 col-md-5  p-md-0">
                 <input
@@ -736,7 +736,7 @@ const Mortageinfo = () => {
                 <h5 className="font26" style={{fontSize:"20px", fontWeight:"500", color:"black"}}>Please fill your contact information</h5>
                 <div className="mt-4 contact_max">
                   <div className="input-group ">
-                    <span className="input-group-label contact-info-label ">
+                    <span className="form-control123 input-group-label contact-info-label ">
                       Email ID
                     </span>
                     <input
@@ -744,7 +744,7 @@ const Mortageinfo = () => {
                       name="email"
                       placeholder="Required"
                       formcontrolname="email"
-                      class="form-control text-lowercase input26clr"
+                      class="form-control123 text-lowercase input26clr ps-2"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -755,14 +755,14 @@ const Mortageinfo = () => {
                       ))
                     : null}
                   <div class="input-group mt-2">
-                    <span class="input-group-label contact-info-label ">
+                    <span class="form-control123 input-group-label contact-info-label ">
                       Cell Phone
                     </span>
                     <input
                       type="number"
                       name="phone"
                       formcontrolname="email"
-                      class="form-control text-lowercase input26clr"
+                      class="form-control123 text-lowercase input26clr"
                       value={phoneNumber}
                       onChange={(e) => setPhoneNumber(e.target.value)}
                     />
@@ -773,7 +773,7 @@ const Mortageinfo = () => {
                       ))
                     : null}
                   <div class="input-group mt-2">
-                    <span class="input-group-label contact-info-label ">
+                    <span class="form-control123 input-group-label contact-info-label ">
                       Work Phone
                     </span>
                     <input
@@ -781,7 +781,7 @@ const Mortageinfo = () => {
                       name="work_phone"
                       inputmode="decimal"
                       autocomplete="nope"
-                      className="form-control input26clr"
+                      className="form-control123 input26clr"
                       id="workphone_input"
                       value={workPhone}
                       onChange={(e) => setWorkPhone(e.target.value)}
@@ -792,7 +792,7 @@ const Mortageinfo = () => {
                       formcontrolname="workExt"
                       name="ext"
                       inputmode="decimal"
-                      class="form-control max-width-100 input26clr"
+                      class="form-control123 max-width-100 input26clr ps-2"
                       value={extension}
                       onChange={(e) => setExtension(e.target.value)}
                     />
@@ -809,7 +809,7 @@ const Mortageinfo = () => {
                     : null}
 
                   <div className="input-group mt-2">
-                    <span className="input-group-label contact-info-label ">
+                    <span className="form-control123 input-group-label contact-info-label ">
                       Home Phone
                     </span>
                     <input
@@ -817,7 +817,7 @@ const Mortageinfo = () => {
                       name="home_phone"
                       inputmode="decimal"
                       autocomplete="nope"
-                      class="form-control input26clr"
+                      class="form-control123 input26clr"
                       value={homePhone}
                       onChange={(e) => setHomePhone(e.target.value)}
                     />
@@ -839,12 +839,12 @@ const Mortageinfo = () => {
                     I confirm that I have read and agree to the Consent to
                     contact
                   </p>
-                  <div className="row mt-5 ms-1">
+                  <div className="row mt-5 ">
                     <h5 style={{fontWeight:"500", color:"black"}} className="p-md-0 ">Where do you live currently?</h5>
                     <div className="position-relative p-0">
                     <input
                     style={{fontSize:"13px", fontWeight:"500",padding:"0 28px"}}
-                      className="form-control rounded-0 mt-1 input26clr"
+                      className="form-control123 rounded-0 mt-1 input26clr"
                       type="email"
                       placeholder="Email Address"
                       value={address}
@@ -874,7 +874,7 @@ const Mortageinfo = () => {
                       <div className="position-relative p-0">
                       <input
                       style={{fontSize:"13px", fontWeight:"500",padding:"0 28px"}}
-                        className="form-control rounded-0 mt-1 input26clr"
+                        className="form-control123 rounded-0 mt-1 input26clr"
                         type="text"
                         placeholder="Enter Mailing Address "
                         disabled={mailing}

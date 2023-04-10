@@ -678,6 +678,7 @@ const Mortageinfo = () => {
                             id="male"
                             name="gender"
                             defaultValue="Primary Residence"
+                            className="btnColorhv266"
                             onChange={(e) => setUse_of_property(e.target.value)}
                           />
                         </div>
@@ -689,6 +690,7 @@ const Mortageinfo = () => {
                             type="radio"
                             id="female"
                             name="gender"
+                            className="btnColorhv266"
                             defaultValue="Investment"
                             onChange={(e) => setUse_of_property(e.target.value)}
                           />
@@ -701,6 +703,7 @@ const Mortageinfo = () => {
                             type="radio"
                             id="other"
                             name="gender"
+                            className="btnColorhv266"
                             defaultValue="Second Home"
                             onChange={(e) => setUse_of_property(e.target.value)}
                           />
@@ -732,7 +735,7 @@ const Mortageinfo = () => {
                       What is a comfortable monthly housing payment?
                     </h5>
                     <div class="input-group126 position-relative my-2">
-                      <BiDollar style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
+                      <BiDollar className="textHover126" style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", left: "18px", top: "12px", zIndex: "123" }} />
                       {/* <input
                         onChange={(e) => setComfortable_monthly(e.target.value)}
                         className="form-control123 m-0 ps-4"
@@ -1188,11 +1191,11 @@ const Mortageinfo = () => {
 
                     <div className="row mt-4 align-items-baseline">
                       <h5 className="font266" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>How much is your down payment?</h5>
-                      <div className="d-flex align-items-center">
+                      <div className="d-flex align-items-center ">
                         <div className="input-group126 position-relative">
                           <BiDollar style={{ fontSize: "16px", fontWeight: "600", position: "absolute", left: "1px", bottom: "11px", zIndex: "123" }} />
                           <input
-                            className="form-control mt-2 ps-3"
+                            className="form-control123 mt-2 ps-3"
                             type="number"
                             name=""
                             id=""
@@ -1205,7 +1208,7 @@ const Mortageinfo = () => {
                         </div>
                         <div className="position-relative">
                           <input
-                            className="form-control mt-2 w-50 ps-3"
+                            className="form-control123 w-25 mt-2 ps-3"
                             type="number"
                             name=""
                             id=""
@@ -1240,7 +1243,7 @@ const Mortageinfo = () => {
                           <select
                             formcontrolname="FundsType"
                             name="donpaymentsources"
-                            className="form-control mt-2 ps-3 text-primary"
+                            className="form-control123 mt-2 ps-3 "
                             style={{ fontSize: "16px", fontWeight: "bold", height: "37px", marginTop: "24px" }}
                             onChange={(e) => setDown_Payment_sources(e.target.value)}
                           >
@@ -1493,7 +1496,7 @@ const Mortageinfo = () => {
                         </div>
                         <div className="position-relative">
                           <input
-                            className="form-control mt-2 w-50 ps-3"
+                            className="form-control123 mt-2 w-25 ps-3"
                             type="number"
                             name=""
                             id=""
