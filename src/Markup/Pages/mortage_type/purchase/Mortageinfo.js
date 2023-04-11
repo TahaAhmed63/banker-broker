@@ -289,13 +289,22 @@ const Mortageinfo = () => {
         });
       });
   };
+  const [editing,steediting] = useState(true)
+  const [editing2,steediting2] = useState(true)
+  console.log(editing,"editing")
 
   // console.log(bund?.address?.map((e,i)=>i),"bund")
   useEffect(() => {
     Get_Borrower();
   }, []);
   const [showExp, setShowExp] = useState(0)
-  function handleChange(event,state) {
+  function handleChange(event,state,type) {
+    if(type === "price_of_property"){
+      steediting2(false)
+    }
+    else{
+      steediting(false)
+    }
     const inputValue = event.target.value;
     // Remove all non-numeric characters from the input value
     const numericValue = inputValue.replace(/[^0-9]/g, '');
@@ -325,7 +334,7 @@ const Mortageinfo = () => {
 
 
   }
-
+console.log(price_of_property,"price_of_property")
 
 
   // Data.append("password");
@@ -745,13 +754,15 @@ const Mortageinfo = () => {
                         value={comfortable_monthly}
                       /> */}
                       <input
-                        onChange={(e) => handleChange(e,setComfortable_monthly)}
+                        onChange={(e) => {handleChange(e,setComfortable_monthly,"comfortable_monthly")}}
                         className="form-control123 m-0 ps-4"
-                        type="text"
+                        type="tel"
                         step="0.1"
                         // min='0'
                         // max='20'
-                        value={comfortable_monthly}
+                        onBlur={()=>steediting(true)}
+                        onFocus={()=>steediting(false)}
+                        value={ `${ comfortable_monthly === undefined ? 0 :comfortable_monthly}${editing === true ? ".00" : ""}`}
                         pattern="^[\d,]+$"
 
                         name=""
@@ -905,14 +916,16 @@ const Mortageinfo = () => {
                         id=""
                       /> */}
                       <input
-                        onChange={(e) => handleChange(e,setPrice_of_property)}
+                        onChange={(e) => handleChange(e,setPrice_of_property,"price_of_property")}
                         className="form-control123 m-0 ps-4"
                         type="text"
-                        step="0.1"
+                        // step="0.1"
                         // min='0'
                         // max='20'
-                        value={price_of_property}
-                        pattern="^[\d,]+$"
+                        onBlur={()=>steediting2(true)}
+                        onFocus={()=>steediting2(false)}
+                        value={ `${ price_of_property === undefined ? 0 : price_of_property}${editing2 === true ? ".00" : ""}`}
+                        // pattern="^[\d,]+$"
 
                         name=""
                         id=""
