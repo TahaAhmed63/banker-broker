@@ -92,6 +92,7 @@ const Mortageinfo = () => {
   useEffect(() => {
     postData();
   }, []);
+ 
   const location = useLocation();
   const mort =
     location.pathname === "/mortage_info"
@@ -466,8 +467,14 @@ console.log(price_of_property,"price_of_property")
     console.log(isOpen, "huihui");
   };
 
-  console.log(typeof currencyValue, "currencyValue");
+  // console.log(typeof currencyValue, "currencyValue");
   console.log((down_percent / 100) / price_of_property, "down_percent");
+  const currencyValue = Number( Number(price_of_property?.replaceAll(",","")) - Number(down_payment)).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
 
   return (
     <>
@@ -1525,7 +1532,7 @@ console.log(price_of_property,"price_of_property")
                         </div>
                         <div className="position-relative">
                           <input
-                            className="form-control123 mt-2 w-25 ps-3"
+                            className="form-control mt-2 w-50 ps-3"
                             type="number"
                             name=""
                             id=""
@@ -1865,7 +1872,7 @@ console.log(price_of_property,"price_of_property")
                       <label className="h6 text-primary mt-2">
                         Your loan amount will be
                       </label>
-                      <h2 className="text-primary bold">{ Number(price_of_property?.replaceAll(",","")) - Number(down_payment)}</h2>
+                      <h2 className="text-primary bold">{currencyValue}</h2>
 
                       <label className="text-secondary h6">
                         Next is <span className="text-dark">Personal Info</span>
