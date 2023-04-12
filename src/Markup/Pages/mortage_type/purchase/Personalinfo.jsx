@@ -886,8 +886,8 @@ const Mortageinfo = () => {
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
                       />
-                      <FaSearch style={{ fontSize: "15px", fontWeight: "600", position: "absolute", top: "16px", left: "6px" }} />
-                      <MdModeEditOutline className="text-primary" style={{ fontSize: "15px", fontWeight: "bold", position: "absolute", top: "16px", right: "15px" }} />
+                      <FaSearch style={{ fontSize: "13px", fontWeight: "600", position: "absolute", top: "15px", left: "9px" }} />
+                      <MdModeEditOutline className="text-primary" style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", top: "14px", right: "15px" }} />
                     </div>
                     {fieldsError?.address
                       ? fieldsError?.address.map((e) => (
@@ -917,7 +917,7 @@ const Mortageinfo = () => {
                           value={mailingAddress}
                           onChange={(e) => setMailingAddress(e.target.value)}
                         />
-                        <FaSearch style={{ fontSize: "15px", fontWeight: "600", position: "absolute", top: "12px", left: "6px" }} />
+                        <FaSearch style={{ fontSize: "13px", fontWeight: "600", position: "absolute", top: "10px", left: "9px" }} />
                       </div>
                       {fieldsError?.have_mailing_address
                         ? fieldsError?.have_mailing_address.map((e) => (
@@ -940,7 +940,7 @@ const Mortageinfo = () => {
                     <div className="col-md-3">
                       <div className="personalinfo_property mx-auto">
                         <input
-                          className="btn261"
+                          className="btn2 personalinfo_property61"
                           label="Own"
                           type="radio"
                           id="male"
@@ -955,7 +955,7 @@ const Mortageinfo = () => {
                     <div className="col-md-2">
                       <div className="personalinfo_property mx-auto">
                         <input
-                          className="btn261"
+                          className="btn2 personalinfo_property61"
                           label="Rent"
                           type="radio"
                           id="female"
@@ -1039,11 +1039,12 @@ const Mortageinfo = () => {
                           <div className="col-md-6">
                             <div class="input-group mt-2">
                               <div className="position-relative ">
-                                <RiArrowDropDownLine style={{ fontSize: "30px", fontWeight: "600", position: "absolute", top: "2px", right: "6px" }} />
+                                {/* <RiArrowDropDownLine style={{ fontSize: "30px", fontWeight: "600", position: "absolute", top: "2px", right: "6px" }} /> */}
                                 <select
                                   style={{ padding: "20px" }}
                                   autocomplete="nope"
-                                  class="form-control  input26clr"
+                                  // className="form-control  input26clr text-muted"
+                                  class="form-select w-100 p-2" aria-label="Default select example"
                                   value={durationOfLivingMonth}
                                   onChange={(e) =>
                                     setDurationOfLivingMonth(e.target.value)
@@ -1053,7 +1054,7 @@ const Mortageinfo = () => {
                                   <option selected disabled>
                                     Select Month
                                   </option>
-                                  <option>1</option>
+                                  <option >1</option>
                                   <option>2</option>
                                   <option>3</option>
                                   <option>4</option>
@@ -1094,7 +1095,7 @@ const Mortageinfo = () => {
                       <div className="personalinfo_property">
                         <input
                           style={{ marginRight: "20px" }}
-                          className="btn261"
+                          className="btn2 btn-link personalinfo_property61"
                           label="Yes"
                           type="radio"
                           id="male"
@@ -1106,7 +1107,7 @@ const Mortageinfo = () => {
                       </div>
                       <div className="personalinfo_property">
                         <input
-                          className="btn261"
+                          className="btn-link personalinfo_property61"
                           label="No"
                           type="radio"
                           id="male"
