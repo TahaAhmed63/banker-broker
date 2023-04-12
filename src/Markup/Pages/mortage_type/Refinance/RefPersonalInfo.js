@@ -373,6 +373,24 @@ const RefPersonalInfo = () => {
   //   console.log(altname, "Checking Aly anme");
   // };
 
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
 
   console.log(military, "military_or_veteran")
   return (
@@ -678,12 +696,12 @@ const RefPersonalInfo = () => {
                       Cell Phone
                     </span>
                     <input
-                      type="number"
+                      type="tel"
                       name="phone"
                       formcontrolname="email"
                       class="form-control text-lowercase BgColors"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setPhoneNumber)}
                     />
                   </div>
                   {fieldsError?.cell_phone
@@ -696,6 +714,7 @@ const RefPersonalInfo = () => {
                       Work Phone
                     </span>
                     <input
+                    type="tel"
                       formcontrolname="workPhoneNumber "
                       name="work_phone"
                       inputmode="decimal"
@@ -703,7 +722,7 @@ const RefPersonalInfo = () => {
                       className="form-control BgColors"
                       id="workphone_input"
                       value={workPhone}
-                      onChange={(e) => setWorkPhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setWorkPhone)}
                     />
 
                     <input
@@ -732,13 +751,15 @@ const RefPersonalInfo = () => {
                       Home Phone
                     </span>
                     <input
+                    type="tel"
                       formcontrolname="homePhoneNumber"
                       name="home_phone"
                       inputmode="decimal"
                       autocomplete="nope"
                       class="form-control BgColors"
                       value={homePhone}
-                      onChange={(e) => setHomePhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setHomePhone)}
+
                     />
                   </div>
                   {fieldsError?.home_phone
