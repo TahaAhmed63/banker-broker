@@ -43,20 +43,7 @@ const Mortageinfo = () => {
         if (response?.data?.status === true) {
           console.log(response?.data?.message, "response?.data?.message");
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -73,20 +60,7 @@ const Mortageinfo = () => {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+       
       });
   };
   useEffect(() => {
@@ -243,20 +217,7 @@ const Mortageinfo = () => {
 
 
 
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -274,20 +235,7 @@ const Mortageinfo = () => {
         setBund(error?.response?.data?.errors);
         console.log(error, "error");
 
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+    
       });
   };
   const [editing,steediting] = useState(true)
@@ -369,20 +317,7 @@ console.log(price_of_property,"price_of_property")
           setLoader(false);
 
           history.push("/personal_info");
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -393,20 +328,7 @@ console.log(price_of_property,"price_of_property")
             top: 0,
             behavior: "smooth",
           });
-          Swal.fire({
-            toast: true,
-            icon: "error",
-            title: response?.data?.error.map((e) => e),
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
         }
       })
       .catch(function (error) {
@@ -416,20 +338,7 @@ console.log(price_of_property,"price_of_property")
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+     
       });
   };
   const [checked, setChecked] = useState("");

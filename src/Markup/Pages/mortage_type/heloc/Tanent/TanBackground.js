@@ -461,20 +461,7 @@ function TanBackground() {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+       
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -661,20 +648,7 @@ function TanBackground() {
           setspecial_needs(response?.data?.data?.special_needs == null ? 0 : 1);
           setLoader(false);
 
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+        
           window.scrollTo({
             top: 0,
             behavior: "smooth",

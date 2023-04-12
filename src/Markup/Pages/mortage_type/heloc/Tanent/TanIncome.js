@@ -86,20 +86,7 @@ function TanIncome() {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -180,20 +167,7 @@ function TanIncome() {
         console.log(getborrower, "getborrower");
         if (response?.data?.status === true) {
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -209,20 +183,7 @@ function TanIncome() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+     
       });
   };
   useEffect(() => {
