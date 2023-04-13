@@ -76,12 +76,13 @@ const Borrowerlogin = () => {
         }
       })
       .catch(function (error) {
+        console.log(error,"error")
         setLoader(false);
 
         Swal.fire({
           toast: true,
           icon: "success",
-          title: error,
+          title: error?.response?.data?.message,
           animation: true,
           position: "top-right",
           showConfirmButton: false,
