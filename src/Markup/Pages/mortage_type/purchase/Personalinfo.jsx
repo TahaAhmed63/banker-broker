@@ -1301,22 +1301,24 @@ const Mortageinfo = () => {
                       <div className="personalinfo_property">
                         <input
                           style={{ marginRight: "20px" }}
-                          className="btn261"
+                          // className="btn261"
+                          className="btn2 btn-link personalinfo_property61"
                           label="Yes"
                           type="radio"
-                          id="male"
-                          name="agent"
+                          id="male1"
+                          name="agent1"
                           checked={depend === true ? true : false}
                           onClick={() => setDepend(true)}
                         />
                       </div>
                       <div className="personalinfo_property">
                         <input
-                          className="btn261"
+                          // className="btn261"
+                          className="btn2 btn-link personalinfo_property61"
                           label="No"
                           type="radio"
-                          id="male"
-                          name="agent"
+                          id="male1"
+                          name="agent1"
                           checked={depend === false ? true : false}
                           onClick={() => setDepend(false)}
                         />
