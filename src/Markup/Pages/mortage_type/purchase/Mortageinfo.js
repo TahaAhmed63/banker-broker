@@ -20,11 +20,11 @@ const Mortageinfo = () => {
 
   const application_id = localStorage.getItem("assignId");
   const reviewData = new FormData();
-  reviewData.append("application_id", application_id);
+  reviewData.append("application_id", application_id)
 
 
   const postData = () => {
-    const token = localStorage.getItem("usertoken");
+    const token = localStorage.getItem("usertoken")
 
     var config = {
       method: "post",
