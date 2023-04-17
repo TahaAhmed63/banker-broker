@@ -460,6 +460,11 @@ a:hover {
 .form-control {
   background-color:#bdc1c536 ;
 }
+
+input{
+  color: #80bdff !important;
+}
+
 .form-control:hover{
   background-color: rgb(179 205 247 / 10%);
 }
@@ -1624,6 +1629,11 @@ alternate {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
     -webkit-box-shadow 0.15s ease-in-out;
 }
+
+/* .fm-control123{
+  color: #495057 !important; 
+} */
+
 .form-control123 {
   display: block;
   width: 100%;

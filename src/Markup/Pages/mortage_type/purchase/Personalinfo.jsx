@@ -731,7 +731,7 @@ const Mortageinfo = () => {
                 <h5 className="font26" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Please fill your contact information</h5>
                 <div className="mt-4 contact_max">
                   <div className="input-group ">
-                    <span className="form-control123 input-group-label contact-info-label ">
+                    <span className="form-control123 fm-control123 input-group-label contact-info-label ">
                       Email ID
                     </span>
                     <input
