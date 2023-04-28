@@ -6,7 +6,9 @@ import { FaArrowRight, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Baseurl from "../../Baseurl";
+// import TanSideBar from "./mortage_type/heloc/Tanent/TanSideBar";
 import { useHistory } from "react-router-dom";
+import SidebarDash from "./mortage_type/heloc/Tanent/SidebarDash";
 
 function Dashboard() {
   const history = useHistory();
@@ -103,7 +105,8 @@ function Dashboard() {
       <hr />
       <div className="container-fluid ps-5">
         <div className="row">
-          <div className="col-md-8 my-5 ps-lg-5 ">
+      <SidebarDash/>
+          <div className="col-md-6 my-5 ps-lg-5 ">
             <div className="row">
               <div className="offset-md-10">
                 <button className="btn btn-primary px-4">
