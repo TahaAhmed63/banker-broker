@@ -36,6 +36,11 @@ const Mortageinfo = () => {
       },
     };
 
+
+
+
+    
+
     axios(config)
       .then((response) => {
         setAllPostData(response?.data?.data);
