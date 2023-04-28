@@ -88,6 +88,7 @@ function App() {
           <Route exact path="/" component={token ?Borrower_types :  Borrowerlogin} />
           <Route exact path="/Borrower/Login" component={Borrowerlogin} />
           <Route exact path="/Borrower/Signup/:useremail/:key/:id" component={BorrowerRegistration} />
+          <Route exact path="/user/:userNAme" component={BorrowerRegistration} />
           {/* Protected Routes */}
           <PrivateRoute exact path="/Show/Index" component={UpdatableEdge} />
           {/* purchase */}
