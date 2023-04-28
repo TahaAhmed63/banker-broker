@@ -5,6 +5,8 @@ import { FaCheckCircle, FaBars } from "react-icons/fa";
 import { Progress } from "antd";
 
 const HelSideBar = () => {
+
+
   const location = useLocation();
   const mort =
     location.pathname === "/mortage_info"

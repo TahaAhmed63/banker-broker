@@ -12,10 +12,11 @@ const BorrowerRegistration = () => {
   const [loader, setLoader] = useState(false);
   const [verfication, setVerficationResponse] = useState();
   const [registrationformShow, setregistrationformShow] = useState(true);
-  let { useremail, key, id } = useParams();
+  let { useremail, key, id,userNAme } = useParams();
   const [bund, setBund] = useState("");
 
   console.log(key, id, useremail, "key");
+  console.log(userNAme, "userNAme");
 
   const history = useHistory();
   const [loginres, setLoginres] = useState();
@@ -39,7 +40,8 @@ const BorrowerRegistration = () => {
 
     var config = {
       method: "post",
-      url: `${Baseurl.baseurl}borrower/new/registration`,
+      // url: `${Baseurl.baseurl}borrower/new/registration`,
+      url: `${Baseurl.baseurl}${userNAme?`Borrower/registration/with/broker/${userNAme}`:`borrower/new/registration`}`,
       data: Data,
     };
 
@@ -48,7 +50,7 @@ const BorrowerRegistration = () => {
         setLoader(true);
         console.log(response);
         setLoginres(response?.data);
-        console.log(response?.data?.data, "response login");
+        console.log(response?.data, "response login");
         setToken(response?.data?.token);
         localStorage.setItem("usertoken", response?.data?.token);
         localStorage.setItem(
@@ -268,8 +270,12 @@ const BorrowerRegistration = () => {
       });
   };
   console.log(loginres);
+  
   useEffect(() => {
-    verification();
+    if(!userNAme){
+      verification();
+    
+    }
   }, []);
   return (
     <>
@@ -283,13 +289,10 @@ const BorrowerRegistration = () => {
             <div className="card custom_card bg-white my-5 ">
               <div className="row">
                 <div className="col-md-6">
-                  <img
-                    className="mx-5 mt-3"
-                    src="https://bankerbroker.dev-oa.xyz/app-assets/images/signup.png"
-                  />
+                  <img className="mx-5 mt-3" src="https://bankerbroker.dev-oa.xyz/app-assets/images/signup.png"/>
                 </div>
-                {verfication?.data?.status === true &&
-                registrationformShow === true ? (
+                { verfication?.data?.status === true &&
+                registrationformShow === true || userNAme && registrationformShow === true? (
                   <div className="col-md-6 mt-4 px-5">
                     <div className="my-3 ">
                       <h5 className="fw-bold fs-4">Create Account</h5>
