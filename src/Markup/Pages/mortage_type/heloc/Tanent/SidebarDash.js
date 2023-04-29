@@ -6,13 +6,17 @@ import { Progress } from "antd";
 import axios from "axios";
 import Baseurl from "../../../../../Baseurl";
 import Swal from "sweetalert2";
-import usamajr from "../../purchase/Personalinfo";
+import { NavLink } from "react-bootstrap";
+// import usamajr from "../../purchase/Personalinfo";
 
 const SidebarDash = () => {
     const [loader, setLoader] = useState(false);
     const [Mortgage, setMortgage] = useState(false);
+    const [Mortgages, setMortgages] = useState(false);
     const [Realstate, setRealstate] = useState(false);
+    const [Realstates, setRealstates] = useState(false);
     const [Insureance, setInsureance] = useState(false);
+    const [Insureances, setInsureances] = useState(false);
     const history = useHistory();
     const [allPostData, setAllPostData] = useState();
     const [bund, setBund] = useState("");
@@ -154,98 +158,130 @@ const SidebarDash = () => {
                 <div className="px-4 my-3 mr-5">
                     <Link to="#">Dashboard</Link>
                     <br />
-                    <span>Tanent</span>
-                    <Progress percent={allPostData} status="actice" />
+                    {/* <span>Tanent</span> */}
+                    {/* <Progress percent={allPostData} status="actice" /> */}
                 </div>
-                <div className="tangreyline"></div>'
+                {/* <div className="tangreyline"></div> */}
 
-                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 ${Mortgage ?  `sidecirclemain` : null}`} onClick={()=>{setMortgage(true);setRealstate(false);setInsureance(false)}}>
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Mortgage ? `sidecirclemain` : null}`} onClick={() => { setMortgage(!Mortgage); setRealstate(false); setInsureance(false) }}>
                     <div className="sidecircle ">
 
-                      { Mortgage ?  <FaCheckCircle className="checkicon" /> : null }
-{/*  */}
+                        {Mortgage ? <FaCheckCircle className="checkicon" /> : null}
+                        {/*  */}
+                        <div className="mort grey_color fw-500" selected>Mortage
+                        </div>
 
-                        {/* <div className="mort grey_color fw-500" selected>Personal</div> */}
-                        {/* <div></div> */}
-                        <select
-                            name="estimated_credit_score"
-                            formcontrolname="creditRange"
-                            className="sideDashbor1 pl-5 py-2 mort grey_color mot2"
-                            onChange={(e) => history.push(e.target.value)}
-                        >
-                            <option value="/mortage_info">
-                                Mortage
-                            </option>
-                            <option value="">
-                                Purchase
-                            </option>
-                            <option value="/ref/income">
-                                Refinance
-                            </option>
-                            <option value="/heloc/lanlord/personalinfo">
-                                Heloc
-                            </option>
-                        </select>
                     </div>
                     <div></div>
                 </div>
+                {Mortgage ?
+                    <>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
-                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 ${Realstate ?  `sidecirclemain` : null}`} onClick={()=>{setMortgage(false);setRealstate(true);setInsureance(false)}}>
-                    <div className="sidecircle">
-               
-                            { Realstate ?  <FaCheckCircle className="checkicon" /> : null }
-                    
+
+                        <Link to="/ref/mortageinfo"className="mort grey_color fw-500" selected>purchase</Link>
+                        
+
+                            <div></div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500" selected>Refinance</Link>
+                            
+
+                            <div>
+                                
+                            </div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <Link  to={"/heloc/lanlord/mortgageinfo"}  className="mort grey_color fw-500"selected> Heloc
+                            </Link>
+
+                            <div></div>
+                        </div>
+                    </>
+                    : null}
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Realstate ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(!Realstate); setInsureance(false) }}>
+                    <div className="sidecircle ">
+
+                        {Realstate ? <FaCheckCircle className="checkicon" /> : null}
+                        {/*  */}
+                        <div className="mort grey_color fw-500" selected> RealState
+                        </div>
+
                     </div>
-                    <select
-                        name="estimated_credit_score"
-                        formcontrolname="creditRange"
-                        className="sideDashbor1 pl-5 py-2 mort grey_color mot2"
-                        onChange={(e) => history.push(e.target.value)}
-                    >
-                        <option value="/mortage_info">
-                            RealState
-                        </option>
-                        <option value="">
-                            Purchase
-                        </option>
-                        <option value="/ref/income">
-                            Refinance
-                        </option>
-                        <option value="/heloc/lanlord/personalinfo">
-                            Heloc
-                        </option>
-                    </select>
+                    <div></div>
                 </div>
+                {Realstate ?
+                    <>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
-                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 ${Insureance ?  `sidecirclemain` : null}`} onClick={()=>{setMortgage(false);setRealstate(false);setInsureance(true)}}>
-                   
-                    <div className="sidecircle">
-                    { Insureance ?  <FaCheckCircle className="checkicon" /> : null }
-                       
+
+                            <div className="mort grey_color fw-500" selected> Purchase
+                            </div>
+
+                            <div></div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <div className="mort grey_color fw-500" selected> Refinance
+                            </div>
+
+                            <div></div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <div className="mort grey_color fw-500" selected> Heloc
+                            </div>
+
+                            <div></div>
+                        </div>
+                    </>
+                    : null}
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Insureance ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(false); setInsureance(!Insureance) }}>
+                    <div className="sidecircle ">
+
+                        {Insureance ? <FaCheckCircle className="checkicon" /> : null}
+                        {/*  */}
+                        <div className="mort grey_color fw-500" selected> Insuracne
+                        </div>
+
                     </div>
-                    <select
-                        name="estimated_credit_score"
-                        formcontrolname="creditRange"
-                        className="sideDashbor1 pl-2 py-2 mort grey_color mot2"
-                        onChange={(e) => history.push(e.target.value)}
-                    >
-                        <option value="/mortage_info">
-                            Insureance
-                        </option>
-                        <option value="">
-                            Purchase
-                        </option>
-                        <option value="/ref/income">
-                            Refinance
-                        </option>
-                        <option value="/heloc/lanlord/personalinfo">
-                            Heloc
-                        </option>
-                    </select>
+                    <div></div>
                 </div>
+                {Insureance ?
+                    <>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
+                            <div className="mort grey_color fw-500" selected> Purchase
+                            </div>
 
+                            <div></div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <div className="mort grey_color fw-500" selected> Refinance
+                            </div>
+
+                            <div></div>
+                        </div>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
+
+
+                            <div className="mort grey_color fw-500" selected> Heloc
+                            </div>
+
+                            <div></div>
+                        </div>
+                    </>
+                    : null}
             </div >
         </>
     );

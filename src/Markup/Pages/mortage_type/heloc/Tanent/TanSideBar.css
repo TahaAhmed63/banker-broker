@@ -7,6 +7,10 @@
     height: 51px;
 }
 
+/* .sidecolheight1{
+    margin-bottom: 34px !important;
+} */
+
 .sideDashbor1{
     width: 50%;
     border: none;
@@ -28,8 +32,22 @@
     box-shadow: inset 3px 0 0 rgb(58 132 253);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-
+    margin-bottom: 75px;
 }
+
+#sideud{
+    box-shadow: inset 3px 0 0 rgb(58 132 253);
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    margin-bottom: 75px;
+    text-decoration: underline;
+}
+
+
+/* .sidecirclemainsd{
+    height: 100px;
+    margin-top: 50px;
+} */
 
 .mort {
     position: inherit;
