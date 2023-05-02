@@ -177,9 +177,8 @@ const SidebarDash = () => {
                 {Mortgage ?
                     <>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
-
-
-                        <Link to="/ref/mortageinfo"className="mort grey_color fw-500" selected>purchase</Link>
+                            
+                        <Link to="/ref/mortageinfo"className="mort grey_color fw-500 fapur1" selected>purchase</Link>
                         
 
                             <div></div>
@@ -187,7 +186,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500" selected>Refinance</Link>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected>Refinance</Link>
                             
 
                             <div>
@@ -197,7 +196,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link  to={"/heloc/lanlord/mortgageinfo"}  className="mort grey_color fw-500"selected> Heloc
+                            <Link  to="/heloc/lanlord/mortgageinfo"  className="mort grey_color fw-500 fapur1"selected> Heloc
                             </Link>
 
                             <div></div>
@@ -220,24 +219,24 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Purchase
-                            </div>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Purchase
+                            </Link>
 
                             <div></div>
                         </div>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Refinance
-                            </div>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Refinance
+                            </Link>
 
                             <div></div>
                         </div>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Heloc
-                            </div>
+                            <Link to="/heloc/lanlord/mortgageinfo" className="mort grey_color fw-500 fapur1" selected> Heloc
+                            </Link>
 
                             <div></div>
                         </div>
@@ -259,24 +258,24 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Purchase
-                            </div>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Purchase
+                            </Link>
 
                             <div></div>
                         </div>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Refinance
-                            </div>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Refinance
+                            </Link>
 
                             <div></div>
                         </div>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <div className="mort grey_color fw-500" selected> Heloc
-                            </div>
+                            <Link to="/heloc/lanlord/mortgageinfo" className="mort grey_color fw-500 fapur1" selected> Heloc
+                            </Link>
 
                             <div></div>
                         </div>

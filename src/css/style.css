@@ -669,7 +669,7 @@ input[type="radio"] {
   flex-direction: column;
   position: sticky;
   top: 12%;
-  height: 583px;
+  /* height: 583px; */
 }
 
 #sidebar2 img {
