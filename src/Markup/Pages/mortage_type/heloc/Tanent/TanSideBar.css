@@ -38,8 +38,15 @@
     box-shadow: inset 3px 0 0 rgb(58 132 253);
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
-    margin-bottom: 75px;
+    /* margin-bottom: 75px; */
 }
+
+/* .sidecirclemain1 {
+    box-shadow: inset 3px 0 0 rgb(58 132 253);
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+    margin-bottom: 75px;
+} */
 
 #sideud{
     box-shadow: inset 3px 0 0 rgb(58 132 253);
