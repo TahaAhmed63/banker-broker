@@ -28,6 +28,12 @@
     left: 20px;
 }
 
+@media only screen and (max-width: 768px){
+.sidecircle1{
+    left: 6px !important;
+}
+}
+
 .sidecirclemain {
     box-shadow: inset 3px 0 0 rgb(58 132 253);
     border-top-right-radius: 100px;
@@ -54,6 +60,15 @@
     z-index: 1212;
     color: #fff;
     margin-left: 44px;
+}
+
+@media only screen and (max-width: 768px){
+.mort1{
+    margin-left: 32px !important;
+}
+.mort2{
+    margin-right: 16px !important;
+}
 }
 
 .sidecirclemain {
@@ -98,6 +113,10 @@
     border-radius: 10px;
     z-index: 12312312;
     position: absolute;
+}
+
+.checkicon1{
+    margin-left: 4px;
 }
 
 .fapur1:hover{

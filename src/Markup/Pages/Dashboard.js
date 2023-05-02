@@ -106,7 +106,7 @@ function Dashboard() {
       <div className="container-fluid ps-4">
         <div className="row">
           <SidebarDash />
-          <div className="col-md-6 my-5  ">
+          <div className="col-md-8 new-mr1">
             <div className="row">
               <div className="">
                 <button className="btn btn-primary px-4">
@@ -250,7 +250,7 @@ function Dashboard() {
               </Table>
             </div>
           </div>
-          <div className="col-md-2"></div>
+          {/* <div className="col-md-2"></div> */}
           <ProfileInfo />
         </div>
       </div>

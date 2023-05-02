@@ -733,6 +733,11 @@ input[type="radio"] {
     display: none;
   }
 }
+@media only screen and (max-width: 425px){
+  .new-mr1{
+    margin-left: -12px !important;
+  }
+}
 
 .theme-white .navbar {
   background-color: #fff !important;

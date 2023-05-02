@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./TanSideBar.css";
 import { Link, useHistory, useLocation } from "react-router-dom";
-import { FaCheckCircle, FaBars } from "react-icons/fa";
+import { FaCheckCircle, FaBars, FaCaretDown } from "react-icons/fa";
 import { Progress } from "antd";
 import axios from "axios";
 import Baseurl from "../../../../../Baseurl";
@@ -164,12 +164,14 @@ const SidebarDash = () => {
                 {/* <div className="tangreyline"></div> */}
 
                 <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Mortgage ? `sidecirclemain` : null}`} onClick={() => { setMortgage(!Mortgage); setRealstate(false); setInsureance(false) }}>
-                    <div className="sidecircle ">
+                    <div className="sidecircle sidecircle1">
 
                         {Mortgage ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div className="mort grey_color fw-500" selected>Mortage
+                        <div className="mort mort1 grey_color fw-500 " selected>Mortage
+                        <FaCaretDown className="checkicon1"/>
                         </div>
+
 
                     </div>
                     <div></div>
@@ -204,11 +206,12 @@ const SidebarDash = () => {
                     </>
                     : null}
                 <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Realstate ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(!Realstate); setInsureance(false) }}>
-                    <div className="sidecircle ">
+                    <div className="sidecircle sidecircle1">
 
                         {Realstate ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div className="mort grey_color fw-500" selected> RealState
+                        <div className="mort mort1 grey_color fw-500" selected> RealState
+                        <FaCaretDown className="checkicon1"/>
                         </div>
 
                     </div>
@@ -243,11 +246,12 @@ const SidebarDash = () => {
                     </>
                     : null}
                 <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Insureance ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(false); setInsureance(!Insureance) }}>
-                    <div className="sidecircle ">
+                    <div className="sidecircle sidecircle1">
 
                         {Insureance ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div className="mort grey_color fw-500" selected> Insuracne
+                        <div className="mort mort1 grey_color fw-500" selected> Insuracne
+                        <FaCaretDown className="checkicon1"/>
                         </div>
 
                     </div>
@@ -258,7 +262,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Purchase
+                            <Link to="/ref/mortageinfo" className="mort mort2 grey_color fw-500 fapur1" selected> Purchase
                             </Link>
 
                             <div></div>
@@ -266,7 +270,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected> Refinance
+                            <Link to="/ref/mortageinfo" className="mort mort2 grey_color fw-500 fapur1" selected> Refinance
                             </Link>
 
                             <div></div>
@@ -274,7 +278,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link to="/heloc/lanlord/mortgageinfo" className="mort grey_color fw-500 fapur1" selected> Heloc
+                            <Link to="/heloc/lanlord/mortgageinfo" className="mort mort2 grey_color fw-500 fapur1" selected> Heloc
                             </Link>
 
                             <div></div>
