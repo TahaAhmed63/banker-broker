@@ -85,7 +85,6 @@
 
 .sidecirclemain:hover {
     background-color: rgb(58 132 253);
-
     cursor: pointer;
 }
 
@@ -95,7 +94,7 @@
     left: 30.5px;
     top: 101px;
     width: 2px;
-    height: 352px;
+    height: 352px !important;
     background-color: #e2e4eb !important;
     z-index: 1212;
     margin-top: 66px;
@@ -157,7 +156,7 @@
     position: -ms-sticky;
     position: -o-sticky;
     position: sticky;
-    height: 600px;
+    height: 575px !important;
     top: 10px;
     bottom: auto;
 }

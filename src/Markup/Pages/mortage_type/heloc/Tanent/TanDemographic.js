@@ -1073,7 +1073,7 @@ function TanDemographic() {
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
 
   const review =
-    location.pathname === "/heloc/tanent/demographic"
+    location.pathname === "/heloc/tanent/review"
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const postData = () => {

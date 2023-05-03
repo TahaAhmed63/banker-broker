@@ -145,6 +145,13 @@ body {
 color: #3a84fd;
 }
 
+.sidecirclemain {
+  box-shadow: inset 3px 0 0 rgb(58 132 253);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  /* margin-bottom: 75px; */
+}
+
 .clr:hover {
   color: #000000;
 }
@@ -2989,6 +2996,7 @@ max-width: 37%;
 }
 .input26clr{
   background-color: white !important;
+  max-width: 56% !important;
 }
 .input266clr{
   background-color: white !important;

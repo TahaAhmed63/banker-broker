@@ -2,21 +2,21 @@ import React, { useState, useEffect } from "react";
 import "./TanSideBar.css";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { FaCheckCircle, FaBars, FaCaretDown } from "react-icons/fa";
-import { Progress } from "antd";
+// import { Progress } from "antd";
 import axios from "axios";
 import Baseurl from "../../../../../Baseurl";
 import Swal from "sweetalert2";
-import { NavLink } from "react-bootstrap";
-// import usamajr from "../../purchase/Personalinfo";
+// import { NavLink } from "react-bootstrap";
+
 
 const SidebarDash = () => {
     const [loader, setLoader] = useState(false);
     const [Mortgage, setMortgage] = useState(false);
-    const [Mortgages, setMortgages] = useState(false);
+    // const [Mortgages, setMortgages] = useState(false);
     const [Realstate, setRealstate] = useState(false);
-    const [Realstates, setRealstates] = useState(false);
+    // const [Realstates, setRealstates] = useState(false);
     const [Insureance, setInsureance] = useState(false);
-    const [Insureances, setInsureances] = useState(false);
+    // const [Insureances, setInsureances] = useState(false);
     const history = useHistory();
     const [allPostData, setAllPostData] = useState();
     const [bund, setBund] = useState("");
@@ -198,7 +198,8 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link  to="/heloc/lanlord/mortgageinfo"  className="mort grey_color fw-500 fapur1"selected> Heloc
+                            <Link  to="/heloc/lanlord/mortgageinfo"  className="mort grey_color fw-500 fapur1"
+                            selected> Heloc
                             </Link>
 
                             <div></div>

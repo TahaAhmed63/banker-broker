@@ -32,7 +32,7 @@ function TanCoSigner() {
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const cosi =
-    location.pathname === "/heloc/tanent/Co-Borrowers"
+    location.pathname === "/heloc/tanent/cosigner"
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const inc =

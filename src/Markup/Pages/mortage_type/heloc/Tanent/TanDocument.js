@@ -99,7 +99,7 @@ export const TanDocument = () => {
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const docu =
-    location.pathname === "/heloc/tanent/declaration"
+    location.pathname === "/heloc/tanent/document"
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
 

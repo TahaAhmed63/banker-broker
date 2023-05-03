@@ -5,6 +5,19 @@
 /* .sidecolheight{
     height: 60px !important;
 } */
+
+.tangreyline:before {
+    content: " ";
+    position: absolute;
+    left: 30.5px;
+    top: 104px !important;
+    width: 2px;
+    height: 469px !important;
+    background-color: #e2e4eb !important;
+    z-index: 1212;
+    margin-top: 66px;
+}
+
 .sidecircle{
     height: 22px;
     width: 22px;
@@ -80,7 +93,7 @@
     position: -ms-sticky;
     position: -o-sticky;
     position: sticky;
-    height: 600px;
+    height: 700px !important;
     top: 10px;
     bottom: auto;
 }

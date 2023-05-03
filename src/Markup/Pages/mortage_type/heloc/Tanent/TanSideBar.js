@@ -48,8 +48,8 @@ const TanSideBar = () => {
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
 
   const review =
-    location.pathname === "/heloc/tanent/demographic"
-      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+    location.pathname === "/heloc/tanent/review"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain text-write"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const postData = () => {
     const token = localStorage.getItem("usertoken");
