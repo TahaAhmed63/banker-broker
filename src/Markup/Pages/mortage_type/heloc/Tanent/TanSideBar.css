@@ -88,11 +88,17 @@
     cursor: pointer;
 }
 
+.sideiconud1{
+    margin-left: 1px !important;
+    margin-top: 13px !important;
+    margin-bottom: 15px !important;
+}
+
 .tangreyline:before {
     content: " ";
     position: absolute;
     left: 30.5px;
-    top: 101px;
+    top: 101px !important;
     width: 2px;
     height: 352px !important;
     background-color: #e2e4eb !important;

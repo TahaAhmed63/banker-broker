@@ -49,7 +49,7 @@ const TanSideBar = () => {
 
   const review =
     location.pathname === "/heloc/tanent/review"
-      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain text-write"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const postData = () => {
     const token = localStorage.getItem("usertoken");
@@ -133,13 +133,16 @@ const TanSideBar = () => {
         }}
       />
 
-      <FaBars
-        class=" block"
-        id="topnav-hamburger-icon"
-        onClick={() => {
-          handleToggle();
-        }}
-      />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
       <div
         className={
           isOpen === true
@@ -147,6 +150,16 @@ const TanSideBar = () => {
             : "d-none"
         }
       >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle(false);
+                }}
+              />
+
         <div className="px-4 my-3">
           <Link to="#">Dashboard</Link>
           <br />

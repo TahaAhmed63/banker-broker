@@ -77,7 +77,7 @@ function TanCoSigner() {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-      
+
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -230,7 +230,7 @@ function TanCoSigner() {
         setGetborrower(response?.data?.data);
         if (response?.data?.status === true) {
           setLoader(false);
-      
+
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -246,7 +246,7 @@ function TanCoSigner() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-     
+
       });
   };
   useEffect(() => {
@@ -490,14 +490,17 @@ function TanCoSigner() {
                 handleToggle();
               }}
             />
+ <FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                handleToggle();
-              }}
-            />
             <div
               className={
                 isOpen === true
@@ -505,6 +508,16 @@ function TanCoSigner() {
                   : "d-none"
               }
             >
+
+              <FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <br />
@@ -613,8 +626,8 @@ function TanCoSigner() {
               isOpen === true
                 ? "col-md-8 open he mt-5 mb-2 ps-lg-5"
                 : isOpen === false
-                ? "col-md-10 open nhi he mt-5 mb-2 ps-lg-5"
-                : ""
+                  ? "col-md-10 open nhi he mt-5 mb-2 ps-lg-5"
+                  : ""
             }
           >
             <div className="row">
@@ -622,7 +635,7 @@ function TanCoSigner() {
                 <>
                   <h3 className="mb-3 p-md-0 fw-bold" id="co-singers-h">Co-Singers</h3>
                   <p class="ng-tns-c159-5  fontforsub fw-bold" id="coborrowerstatus">No Co-Signer has been added
-                                yet</p>
+                    yet</p>
                   {getborrower ? (
                     getborrower?.map((e) => {
                       return (
@@ -714,7 +727,7 @@ function TanCoSigner() {
                     <div className="mt-4 contact_max">
                       <div class="input-group ">
                         <span class="input-group-label contact-info-label " id="first-name-width1">
-                        First Name
+                          First Name
                         </span>
                         <input
                           type="text"
@@ -728,12 +741,12 @@ function TanCoSigner() {
 
                       {bund?.cob_first_name
                         ? bund?.cob_first_name.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label " id="first-name-width1">
-                        Last Name
+                          Last Name
                         </span>
                         <input
                           type="text"
@@ -746,12 +759,12 @@ function TanCoSigner() {
 
                       {bund?.cob_last_name
                         ? bund?.cob_last_name.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label " id="first-name-width1">
-                        Email ID
+                          Email ID
                         </span>
                         <input
                           type="email"
@@ -764,12 +777,12 @@ function TanCoSigner() {
 
                       {bund?.cob_email
                         ? bund?.cob_email.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label " id="first-name-width1">
-                        Phone
+                          Phone
                         </span>
                         <input
                           type="tel"
@@ -782,8 +795,8 @@ function TanCoSigner() {
 
                       {bund?.cob_phone
                         ? bund?.cob_phone.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
 
                       <div class="form-check my-3">
@@ -799,8 +812,8 @@ function TanCoSigner() {
 
                       {bund?.complete_task
                         ? bund?.complete_task.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                     </div>
                     {spouse == 1 ? (
@@ -811,7 +824,7 @@ function TanCoSigner() {
                         <div className="mt-4 contact_max">
                           <div class="input-group ">
                             <span class="input-group-label contact-info-label " id="first-name-width1">
-                            First Name
+                              First Name
                             </span>
                             <input
                               type="text"
@@ -825,12 +838,12 @@ function TanCoSigner() {
 
                           {bund?.sp_first_name
                             ? bund?.sp_first_name.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label " id="first-name-width1">
-                            Last Name
+                              Last Name
                             </span>
                             <input
                               type="text"
@@ -845,12 +858,12 @@ function TanCoSigner() {
 
                           {bund?.sp_last_name
                             ? bund?.sp_last_name.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label " id="first-name-width1">
-                            Email ID
+                              Email ID
                             </span>
                             <input
                               formcontrolname="workPhoneNumber"
@@ -864,12 +877,12 @@ function TanCoSigner() {
 
                           {bund?.sp_email
                             ? bund?.sp_email.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label " id="first-name-width1">
-                            Phone
+                              Phone
                             </span>
                             <input
                               type="tel"
@@ -882,8 +895,8 @@ function TanCoSigner() {
 
                           {bund?.sp_phone
                             ? bund?.sp_phone.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
 
                           <div class="form-check my-3">
@@ -902,8 +915,8 @@ function TanCoSigner() {
 
                           {bund?.spouse
                             ? bund?.spouse.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                         </div>
                       </>
@@ -931,10 +944,10 @@ function TanCoSigner() {
           </div>
           <ProfileInfo />
           <div className="footerimage3">
-                <img src="https://bankerbroker.developer-oa.xyz/assets/img/footercity.svg" width="100%" alt="" />
-              </div>
+            <img src="https://bankerbroker.developer-oa.xyz/assets/img/footercity.svg" width="100%" alt="" />
+          </div>
         </div>
-        
+
       </div>
     </>
   );

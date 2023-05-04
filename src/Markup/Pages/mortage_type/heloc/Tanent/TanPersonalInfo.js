@@ -380,13 +380,16 @@ const TanPersonalInfo = () => {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
               className={
                 isOpen === true
@@ -394,6 +397,16 @@ const TanPersonalInfo = () => {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <br />
@@ -502,7 +515,7 @@ const TanPersonalInfo = () => {
               isOpen === true
                 ? "col-md-8 open he mt-5 mb-2 ps-lg-5"
                 : isOpen === false
-                  ? "col-md-12 open nhi he mt-5 mb-2 ps-lg-5"
+                  ? "col-md-10 open nhi he mt-5 mb-2 ps-lg-5"
                   : ""
             }
           >
