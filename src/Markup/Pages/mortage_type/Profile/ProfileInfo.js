@@ -10,8 +10,8 @@ const ProfileInfo = () => {
 
   return (
     <>
-      <div className="col-md-2">
-        <aside id="sidear2">
+      <div className="col-md-2 ">
+        <aside id="sidear2 ">
           <ul className="navbar-nav navbar-right">
             <li className="">
               <Link to="#">

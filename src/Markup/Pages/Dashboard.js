@@ -251,7 +251,7 @@ function Dashboard() {
             </div>
           </div>
           {/* <div className="col-md-2"></div> */}
-          <ProfileInfo />
+          <ProfileInfo/>
         </div>
       </div>
     </>
