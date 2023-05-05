@@ -41,7 +41,7 @@ const Borrowerlogin = () => {
         );
         if (response.data.status === true) {
           setLoader(false);
-          history.push("/selectType");
+          history.push("/dashboard");
           Swal.fire({
             toast: true,
             icon: "success",
