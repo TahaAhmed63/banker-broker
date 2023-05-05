@@ -132,6 +132,265 @@ const SidebarDash = () => {
     };
 
 
+
+
+    const GettingidPurchase = () => {
+        setLoader(true);
+        let token = localStorage.getItem("usertoken");
+        var config = {
+          method: "post",
+          url: `${Baseurl.baseurl}assign/application/id`,
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+    
+        axios(config)
+          .then(function (response) {
+            setLoader(true);
+    
+            console.log(response);
+            localStorage.setItem("assignId", response?.data?.data?.id);
+            localStorage.removeItem("newid");
+            if (response.data.status === true) {
+              setLoader(false);
+              history.push("/mortage_info");
+    
+              Swal.fire({
+                toast: true,
+                icon: "success",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            } else {
+              setLoader(false);
+              Swal.fire({
+                toast: true,
+                icon: "error",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            }
+          })
+          .catch(function (error) {
+            setLoader(false);
+            Swal.fire({
+              toast: true,
+              icon: "error",
+              title: error,
+              animation: true,
+              position: "top-right",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+          });
+      };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      const GettingidRef = () => {
+        setLoader(true);
+        let token = localStorage.getItem("usertoken");
+        var config = {
+          method: "post",
+          url: `${Baseurl.baseurl}mortgage/refinance/assign/application/id`,
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+    
+        axios(config)
+          .then(function (response) {
+            setLoader(true);
+    
+            console.log(response);
+            localStorage.setItem("assignId", response?.data?.data?.id);
+            localStorage.removeItem("newid");
+            if (response.data.status === true) {
+              setLoader(false);
+              history.push("/ref/mortageinfo");
+    
+              Swal.fire({
+                toast: true,
+                icon: "success",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            } else {
+              setLoader(false);
+              Swal.fire({
+                toast: true,
+                icon: "error",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            }
+          })
+          .catch(function (error) {
+            setLoader(false);
+            Swal.fire({
+              toast: true,
+              icon: "error",
+              title: error,
+              animation: true,
+              position: "top-right",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+          });
+      };
+
+
+
+
+
+
+
+
+      const GettingidTanent = () => {
+        setLoader(true);
+        let token = localStorage.getItem("usertoken");
+        var config = {
+          method: "post",
+          url: `${Baseurl.baseurl}real-estate/rent/assign/application-id`,
+          headers: {
+            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        };
+    
+        axios(config)
+          .then(function (response) {
+            setLoader(true);
+    
+            console.log(response);
+            localStorage.setItem("assignId", response?.data?.data?.id);
+            localStorage.removeItem("newid");
+    
+            if (response.data.status === true) {
+              setLoader(false);
+            //   history.push("/heloc");
+    
+              Swal.fire({
+                toast: true,
+                icon: "success",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            } else {
+              setLoader(false);
+              Swal.fire({
+                toast: true,
+                icon: "error",
+                title: response?.data?.message,
+                animation: true,
+                position: "top-right",
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                  toast.addEventListener("mouseenter", Swal.stopTimer);
+                  toast.addEventListener("mouseleave", Swal.resumeTimer);
+                },
+              });
+            }
+          })
+          .catch(function (error) {
+            setLoader(false);
+            Swal.fire({
+              toast: true,
+              icon: "error",
+              title: error,
+              animation: true,
+              position: "top-right",
+              showConfirmButton: false,
+              timer: 3000,
+              timerProgressBar: true,
+              didOpen: (toast) => {
+                toast.addEventListener("mouseenter", Swal.stopTimer);
+                toast.addEventListener("mouseleave", Swal.resumeTimer);
+              },
+            });
+          });
+      };
     return (
         <>
             <FaBars
@@ -180,7 +439,7 @@ const SidebarDash = () => {
                     <>
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
                             
-                        <Link to="/ref/mortageinfo"className="mort grey_color fw-500 fapur1" selected>purchase</Link>
+                        <Link to="/mortage_info"className="mort grey_color fw-500 fapur1" selected  onClick={() => GettingidPurchase()}>purchase</Link>
                         
 
                             <div></div>
@@ -188,7 +447,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected>Refinance</Link>
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected onClick={() => GettingidRef()}>Refinance</Link>
                             
 
                             <div>
@@ -198,7 +457,7 @@ const SidebarDash = () => {
                         <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`}>
 
 
-                            <Link  to="/heloc/lanlord/mortgageinfo"  className="mort grey_color fw-500 fapur1"selected> Heloc
+                            <Link  to="/heloc/tanent/personalinfo"  className="mort grey_color fw-500 fapur1"selected onClick={() => GettingidTanent()}> Heloc
                             </Link>
 
                             <div></div>
