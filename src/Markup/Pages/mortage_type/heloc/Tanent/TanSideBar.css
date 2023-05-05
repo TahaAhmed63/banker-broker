@@ -94,6 +94,10 @@
     margin-bottom: 15px !important;
 }
 
+.ud1{
+    width: 200px !important;
+}
+
 .tangreyline:before {
     content: " ";
     position: absolute;

@@ -265,14 +265,16 @@ function RefRealState() {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                // props.OnHandleToggle();
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
               className={
                 isOpen === true
@@ -280,6 +282,16 @@ function RefRealState() {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">RealState</Link>
                 <Progress percent={50} status="actice" />

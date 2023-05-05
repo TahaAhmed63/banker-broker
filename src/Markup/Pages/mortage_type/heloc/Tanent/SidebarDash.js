@@ -120,67 +120,69 @@ const SidebarDash = () => {
     const [isOpen, setIsOpen] = useState(true);
 
     const handleToggle = () => {
-        if (isOpen === false) {
-            setIsOpen(true);
+        setIsOpen(!isOpen)
+        if (Mortgage === true) {
+            setMortgage(false)
         }
-        if (isOpen === true) {
-            setIsOpen(false);
-        } else {
-            console.log(isOpen, "hui");
+        if (Realstate === true) {
+            setRealstate(false)
         }
-        console.log(isOpen, "huihui");
-    };
+        if (Insureance === true) {
+            setInsureance(false)
+        }
+    }
 
 
     return (
         <>
-           
+
             <div
-            style={{width: isOpen ? "200px" : "50px",height:"auto" , marginTop: "-8px"}}
+                style={{ width: isOpen || Mortgage || Realstate || Insureance ? "200px" : "50px", height: "auto", marginTop: "-8px" }}
                 className={
-                    isOpen === true
+                    isOpen || Mortgage || Realstate || Insureance === true
                         ? "col-md-2 ps-0 sidebarmain fixed_side sidebar-nav open "
                         : "30px"
                 }
             >
 
-<FaBars
-                class=" none"
-                onClick={() => {
-                    handleToggle();
-                }}
-            />
+                <FaBars
+                    class=" none"
+                    onClick={() => {
+                        handleToggle();
+                    }}
+                />
 
-            <FaBars
-            style={{marginLeft:"153px", marginTop:"13px"}}
-                className={
-                isOpen === true
-            ? "block"
-            : "sideiconud1"}
-                id="topnav-hamburger-icon"
-                onClick={() => {
-                    handleToggle();
-                }}
-            />
+                <FaBars
+                    style={{ marginLeft: "153px", marginTop: "13px" }}
+                    className={
+                        isOpen || Mortgage || Realstate || Insureance === true
+                            ? "block"
+                            : "sideiconud1"}
+                    id="topnav-hamburger-icon"
+                    onClick={() => {
+
+                        handleToggle();
+                    }}
+                />
 
                 <div className="d-flex justify-content-around align-items-center">
-                <FaHome style={{marginLeft: isOpen ? "0px" : "-11px"}}/>
-                <div className="px-4 my-3 mr-5 m-0" style={{display: isOpen ? "block" : "none"}}>
-                    <Link style={{marginLeft:"-49px"}} to="#">Dashboard</Link>
-                    <br />
-                    {/* <span>Tanent</span> */}
-                    {/* <Progress percent={allPostData} status="actice" /> */}
-                </div>
+                    <FaHome style={{ marginLeft: isOpen || Mortgage || Realstate || Insureance ? "0px" : "-11px" }} />
+                    <div className="px-4 my-3 mr-5 m-0" style={{ display: isOpen || Mortgage || Realstate || Insureance ? "block" : "none" }}>
+                        <Link style={{ marginLeft: "-49px" }} to="#">Dashboard</Link>
+                        <br />
+                        {/* <span>Tanent</span> */}
+                        {/* <Progress percent={allPostData} status="actice" /> */}
+                    </div>
                 </div>
                 {/* <div className="tangreyline"></div> */}
 
-                <div className={ `sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Mortgage ?  `sidecirclemain`  : null}`} onClick={() => { setMortgage(!Mortgage); setRealstate(false); setInsureance(false) }} style={{marginLeft: isOpen ? "3px" : "0px"}}>
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Mortgage ? `sidecirclemain ` : null}`} onClick={() => { setMortgage(!Mortgage); setRealstate(false); setInsureance(false) }} >
                     <div className="sidecircle sidecircle1">
 
-                        {Mortgage ? <FaCheckCircle className="checkicon"  /> : null}
+                        {Mortgage ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div style={{display: isOpen ? "block" : "none"}} className="mort mort1 grey_color fw-500 " selected>Mortage
-                        <FaCaretDown className="checkicon1"/>
+                        <div style={{ display: isOpen || Mortgage || Realstate || Insureance ? "block" : "none" }} className="mort mort1 grey_color fw-500 " selected>Mortage
+                            <FaCaretDown className="checkicon1" />
                         </div>
 
 
@@ -189,41 +191,41 @@ const SidebarDash = () => {
                 </div>
                 {Mortgage ?
                     <>
-                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} style={{width: isOpen ? "200px" : "100px"}}>
-                            
-                        <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1"  selected>purchase</Link>
-                        
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} >
+
+                            <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected>purchase</Link>
+
 
                             <div></div>
                         </div>
-                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} style={{width: isOpen ? "200px" : "100px"}}>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} >
 
 
                             <Link to="/ref/mortageinfo" className="mort grey_color fw-500 fapur1" selected>Refinance</Link>
-                            
+
 
                             <div>
-                                
+
                             </div>
                         </div>
-                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} style={{width: isOpen ? "200px" : "100px"}}>
+                        <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 bg-hovering`} >
 
 
-                            <Link  to="/heloc/lanlord/mortgageinfo"  className="mort grey_color fw-500 fapur1"
-                            selected> Heloc
+                            <Link to="/heloc/lanlord/mortgageinfo" className="mort grey_color fw-500 fapur1"
+                                selected> Heloc
                             </Link>
 
                             <div></div>
                         </div>
                     </>
                     : null}
-                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Realstate ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(!Realstate); setInsureance(false) }} style={{marginLeft: isOpen ? "3px" : "0px"}}>
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Realstate ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(!Realstate); setInsureance(false) }} style={{ marginLeft: isOpen || Mortgage || Realstate || Insureance ? "3px" : "0px" }}>
                     <div className="sidecircle sidecircle1">
 
-                        {Realstate ? <FaCheckCircle className="checkicon"  /> : null}
+                        {Realstate ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div className="mort mort1 grey_color fw-500" style={{display: isOpen ? "block" : "none"}} selected> RealState
-                        <FaCaretDown className="checkicon1"/>
+                        <div className="mort mort1 grey_color fw-500" style={{ display: isOpen || Mortgage || Realstate || Insureance ? "block" : "none" }} selected> RealState
+                            <FaCaretDown className="checkicon1" />
                         </div>
 
                     </div>
@@ -257,13 +259,13 @@ const SidebarDash = () => {
                         </div>
                     </>
                     : null}
-                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Insureance ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(false); setInsureance(!Insureance) }} style={{marginLeft: isOpen ? "3px" : "0px"}}>
+                <div className={`sidecolheight d-flex justify-content-around align-items-center w-100 mb-1 ${Insureance ? `sidecirclemain` : null}`} onClick={() => { setMortgage(false); setRealstate(false); setInsureance(!Insureance) }} style={{ marginLeft: isOpen || Mortgage || Realstate || Insureance ? "3px" : "0px" }}>
                     <div className="sidecircle sidecircle1">
 
-                        {Insureance ? <FaCheckCircle className="checkicon"  /> : null}
+                        {Insureance ? <FaCheckCircle className="checkicon" /> : null}
                         {/*  */}
-                        <div className="mort mort1 grey_color fw-500" style={{display: isOpen ? "block" : "none"}} selected> Insuracne
-                        <FaCaretDown className="checkicon1"/>
+                        <div className="mort mort1 grey_color fw-500" style={{ display: isOpen || Mortgage || Realstate || Insureance ? "block" : "none" }} selected> Insuracne
+                            <FaCaretDown className="checkicon1" />
                         </div>
 
                     </div>
