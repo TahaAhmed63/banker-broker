@@ -22,15 +22,15 @@ const BorrowerRegistration = () => {
   const [token, setToken] = useState();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [first_name, setFirst_name] = useState("");
+  const [firstname, setFirstname] = useState("");
   const [Code, setCode] = useState();
-  const [last_name, setLast_name] = useState("");
+  const [lastname, setLast_name] = useState("");
   const [phone, setPhone] = useState("");
   const Data = new FormData();
   Data.append("email", email);
   Data.append("password", password);
-  Data.append("first_name", first_name);
-  Data.append("last_name", last_name);
+  Data.append("first_name", firstname);
+  Data.append("last_name", lastname);
   Data.append("phone", phone);
   Data.append("verification_id", id);
   Data.append("key", key);
@@ -156,7 +156,6 @@ const BorrowerRegistration = () => {
           });
         } else {
           setLoader(false);
-
           Swal.fire({
             toast: true,
             icon: "error",
@@ -207,6 +206,10 @@ const BorrowerRegistration = () => {
         console.log(response);
         setVerficationResponse(response);
         console.log(response?.data?.data);
+        setFirstname(response?.data?.data?.name)
+        setEmail(response?.data?.data?.receiver)
+        setPhone(response?.data?.data?.phone)
+        // setLast_name(response?.data?.data?.name)
         // setToken(response?.data?.token);
         // localStorage.setItem("usertoken", response?.data?.token);
         // localStorage.setItem(
@@ -306,8 +309,9 @@ const BorrowerRegistration = () => {
                             <label className="mb-2 fs-small" style={{color:"#34395e"}}>First name</label>
                             <div className="input-groups">
                               <input
-                                onChange={(e) => setFirst_name(e.target.value)}
+                                onChange={(e) => setFirstname(e.target.value)}
                                 required=""
+                                value={firstname}
                                 // value={""}
                                 placeholder="Your First Name"
                                 type="text"
@@ -349,7 +353,7 @@ const BorrowerRegistration = () => {
                             <input
                               onChange={(e) => setEmail(e.target.value)}
                               required=""
-                              // value={""}
+                              value={email}
                               placeholder="Your Email Address"
                               className="form-control bg-light py-2"
                               style={{ backgroundColor: "gray" }}
@@ -391,7 +395,7 @@ const BorrowerRegistration = () => {
                             <input
                               onChange={(e) => setPhone(e.target.value)}
                               required=""
-                              // value={""}
+                              value={phone}
                               className="form-control bg-light py-2"
                               style={{ backgroundColor: "gray" }}
                               type="number"
