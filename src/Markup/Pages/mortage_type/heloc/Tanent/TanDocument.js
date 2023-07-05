@@ -99,7 +99,7 @@ export const TanDocument = () => {
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const docu =
-    location.pathname === "/heloc/tanent/declaration"
+    location.pathname === "/heloc/tanent/document"
       ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
       : "sidecolheight d-flex justify-content-around align-items-center w-100";
 
@@ -128,20 +128,7 @@ export const TanDocument = () => {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -419,13 +406,16 @@ export const TanDocument = () => {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
               className={
                 isOpen === true
@@ -433,6 +423,16 @@ export const TanDocument = () => {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <br />

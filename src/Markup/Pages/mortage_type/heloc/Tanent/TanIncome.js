@@ -18,12 +18,14 @@ import {
 } from "react-icons/fa";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import { Progress } from "antd";
+import { Background } from "reactflow";
 
 function TanIncome() {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [allPostData, setAllPostData] = useState();
   const [bund, setBund] = useState("");
+ 
 
   const application_id = localStorage.getItem("assignId");
   const reviewData = new FormData();
@@ -84,20 +86,7 @@ function TanIncome() {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -178,20 +167,7 @@ function TanIncome() {
         console.log(getborrower, "getborrower");
         if (response?.data?.status === true) {
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -207,20 +183,7 @@ function TanIncome() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+     
       });
   };
   useEffect(() => {
@@ -400,20 +363,34 @@ function TanIncome() {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
+                style={{width: isOpen ? "210px" : "143px",height:"auto" , marginTop: "-8px"}}
               className={
                 isOpen === true
                   ? "col-md-2 ps-0 sidebarmain fixed_side sidebar-nav open "
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <br />
@@ -465,7 +442,7 @@ function TanIncome() {
                       </>
                     ) : null}
                   </div>
-                 
+
                   <div className="mort grey_color fw-500">Income</div>
                   <div></div>
                 </div>
@@ -526,149 +503,152 @@ function TanIncome() {
                   isOpen === true
                     ? "col-md-8 open he my-5 ps-lg-5"
                     : isOpen === false
-                    ? "col-md-10 open nhi he my-5 ps-lg-5"
-                    : ""
+                      ? "col-md-10 open nhi he my-5 ps-lg-5"
+                      : ""
                 }
               >
-                            <div className="container">
-                <div className="row">
-                  {showfirstform === true ? null : (
-                    <>
-                     <div class="col-md-4 mt-4">
-                            <p id="note-hd1"><b>Note:</b> Min.
-                                2
-                                years
-                                employment history required for <span>hnh</span></p>
+                <div className="container">
+                  <div className="row">
+                    {showfirstform === true ? null : (
+                      <>
+                        <div class="col-md-4 mt-4">
+                          <p id="note-hd1"><b>Note:</b> Min.
+                            2
+                            years
+                            employment history required for <span>hnh</span></p>
                         </div>
                         <div className="mb-3 p-0 ">
-                      <h5 className="income-hc1">hnh</h5>
-                      </div>
-                      <div class="col-md-4 mt-4">
-                                <p id="added-p12">No income has been added yet</p>
-                            </div>
-                            <br />
-                      {getborrower ? (
-                        getborrower?.map((e) => {
-                          return (
-                            <>
-                            <div className="container"></div>
-                              <div className="row">
-                                <div className="col-md-3 my-3">
-                                  <h5 className="text-muted">
-                                    <FaUserAlt className="text-primary" />
-                                    &nbsp;&nbsp;
-                                    {e?.employee_name
-                                      ? e?.employee_name
-                                      : e?.other_type_income}
-                                  </h5>
-                                  <h5 className="text-muted">
-                                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-                                    {e?.start_date
-                                      ? e?.start_date
-                                      : e?.description}
-                                  </h5>
-                                  <h5 className="text-muted">
-                                    &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-                                    {e?.end_date
-                                      ? e?.end_date
-                                      : e?.retirement_date}
-                                  </h5>
-                                </div>
-                                <div className="col-md-3">
-                                  <div className="row">
-                                    <div className="col-md-6 mt-2">
-                                      {e?.military_employment_income == 1 ? (
-                                        <Link
-                                          to={`/heloc/tanent/MilitryEdit/${e?.id}`}
-                                        >
-                                          <FaEdit
-                                            className="text-success"
-                                            style={{ fontSize: 25 }}
-                                          />
-                                        </Link>
-                                      ) : null}
-                                      {e?.base_employment_income == 1 ? (
-                                        <Link
-                                          to={`/heloc/tanent/BaseEdit/${e?.id}`}
-                                        >
-                                          <FaEdit
-                                            className="text-success"
-                                            style={{ fontSize: 25 }}
-                                          />
-                                        </Link> 
-                                      ) : null}
-                                      {e?.other_income == 1 ? (
-                                        <Link
-                                          to={`/heloc/tanent/income/OtherEdit/${e?.id}`}
-                                        >
-                                          <FaEdit
-                                            className="text-success"
-                                            style={{ fontSize: 25 }}
-                                          />
-                                        </Link>
-                                      ) : null}
+                          <h5 className="income-hc1">hnh</h5>
+                        </div>
+                        <div class="col-md-4 mt-4">
+                          <p id="added-p12">No income has been added yet</p>
+                        </div>
+                        <br />
+                        {getborrower ? (
+                          getborrower?.map((e) => {
+                            return (
+                              <>
+                                <div className="container"></div>
+                                <div className="row">
+                                  <div className="col-md-3 my-3">
+                                    <h5 className="text-muted">
+                                      <FaUserAlt className="text-primary" />
+                                      &nbsp;&nbsp;
+                                      {e?.employee_name
+                                        ? e?.employee_name
+                                        : e?.other_type_income}
+                                    </h5>
+                                    <h5 className="text-muted">
                                       &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-                                      <FaTrash
-                                        onClick={() => Delete_Borrower(e?.id)}
-                                        className="text-danger"
-                                        style={{ fontSize: 25 }}
-                                      />
+                                      {e?.start_date
+                                        ? e?.start_date
+                                        : e?.description}
+                                    </h5>
+                                    <h5 className="text-muted">
+                                      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                                      {e?.end_date
+                                        ? e?.end_date
+                                        : e?.retirement_date}
+                                    </h5>
+                                  </div>
+                                  <div className="col-md-3">
+                                    <div className="row">
+                                      <div className="col-md-6 mt-2">
+                                        {e?.military_employment_income == 1 ? (
+                                          <Link
+                                            to={`/heloc/tanent/MilitryEdit/${e?.id}`}
+                                          >
+                                            <FaEdit
+                                              className="text-success"
+                                              style={{ fontSize: 25 }}
+                                            />
+                                          </Link>
+                                        ) : null}
+                                        {e?.base_employment_income == 1 ? (
+                                          <Link
+                                            to={`/heloc/tanent/BaseEdit/${e?.id}`}
+                                          >
+                                            <FaEdit
+                                              className="text-success"
+                                              style={{ fontSize: 25 }}
+                                            />
+                                          </Link>
+                                        ) : null}
+                                        {e?.other_income == 1 ? (
+                                          <Link
+                                            to={`/heloc/tanent/income/OtherEdit/${e?.id}`}
+                                          >
+                                            <FaEdit
+                                              className="text-success"
+                                              style={{ fontSize: 25 }}
+                                            />
+                                          </Link>
+                                        ) : null}
+                                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
+                                        <FaTrash
+                                          onClick={() => Delete_Borrower(e?.id)}
+                                          className="text-danger"
+                                          style={{ fontSize: 25 }}
+                                        />
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
-                            </>
-                          );
-                        })
-                      ) : (
-                        <p className=" fw-bold p-0">
-                          No income has been added yet
-                        </p>
-                      )}
-                      <div className="personalinfo_property mx-auto">
-                        <p className="fw-semibold total-fnt1">Total Income</p>
-                        <select
-                          className="btns btns-outline-primary dropdown-toggle income-select"
-                          id="add-income-slt1"
-                          onChange={(e) => {
-                            setpanel(e.target.value);
-                          }}
+                              </>
+                            );
+                          })
+                        ) : (
+                          <p className=" fw-bold p-0">
+                            No income has been added yet
+                          </p>
+                        )}
+                        <div className="personalinfo_property mx-auto">
+                          <p className="fw-semibold total-fnt1">Total Income</p>
+                          <select 
+                            className="btns btn-outline-primary dropdown-toggle income-select col-lg-4"
+                            id="add-income-slt1"
+                            
+                            onChange={(e) => {
+                              setpanel(e.target.value);
+                            }}
+                          >
+                            <option selected>ADD INCOME</option>
+                            <option className="base-sdw3"  value="base">usama I am currently Employed</option>
+                            <option className="base-sdw3 " value="militry">I receive Military Income</option>
+                            <option className="base-sdw3 " value="other">I have other income sources</option>
+                          </select>
+                        </div>
+                        
+                        
+                        <hr className="divider" />
+                        <div class="form-check my-5 ">
+                          <input
+                            class="form-check-input"
+                            type="checkbox"
+                            value=""
+                            id="defaultCheck1"
+                            onClick={Check_ApplyingSolo}
+                          />
+                          <label class="form-check-label any-hvr5" for="defaultCheck1">
+                            I do not earn any Income
+                          </label>
+                        </div>
+                        <label className="text-scolor fontsbtn">
+                          Next is <span className="fontsbtncobor">Background</span>
+                        </label>{" "}
+                        <br />
+                        <button
+                          className="btn btn-primary rounded-0 mt-2 col-md-3 fw-bolder continue-fnt12"
+                          onClick={() => Submit_Borrower()}
                         >
-                          <option selected>ADD INCOME</option>
-                          <option className="base-sdw3" value="base">I am currently Employed</option>
-                          <option className="base-sdw3" value="militry">I receive Military Income</option>
-                          <option className="base-sdw3" value="other">I have other income sources</option>
-                        </select>
-                      </div>
-                      <hr className="divider" />
-                      <div class="form-check my-5 ">
-                        <input
-                          class="form-check-input"
-                          type="checkbox"
-                          value=""
-                          id="defaultCheck1"
-                          onClick={Check_ApplyingSolo}
-                        />
-                        <label class="form-check-label any-hvr5" for="defaultCheck1">
-                          I do not earn any Income
-                        </label>
-                      </div>
-                      <label className="text-scolor fontsbtn">
-                        Next is <span className="fontsbtncobor">Background</span>
-                      </label>{" "}
-                      <br />
-                      <button
-                        className="btn btn-primary rounded-0 mt-2 col-md-3 fw-bolder continue-fnt12"
-                        onClick={() => Submit_Borrower()}
-                      >
-                        Save And Continue &nbsp;
-                        <AiOutlineArrowRight />
-                      </button>{" "}
-                    </>
-                  )}
-                  {/* <h2 className="mt-4">INCOME</h2>
+                          Save And Continue &nbsp;
+                          <AiOutlineArrowRight />
+                        </button>{" "}
+                      </>
+                    )}
+                    {/* <h2 className="mt-4">INCOME</h2>
         <p className="fw-semibold my-3">No income has been added yet</p> */}
-                  {/* <div className="col-md-8 mt-5">
+                    {/* <div className="col-md-8 mt-5">
           <p className="fw-semibold">Total Income</p>
           <select className="form-select form-select-lg mb-3 form-control py-2" onChange={(e)=>{setpanel(e.target.value)}}>
             <option selected>ADD INCOME</option>
@@ -701,11 +681,11 @@ function TanIncome() {
               </button>{" "}
          </div>
         </div> */}
+                  </div>
                 </div>
-                </div>
-                
+
               </div>
-             
+
             </>
           ) : null}
 
@@ -716,8 +696,8 @@ function TanIncome() {
                   isOpen === true
                     ? "col-md-8 open he my-5 ps-lg-5"
                     : isOpen === false
-                    ? "col-md-10 open nhi he my-5 ps-lg-5"
-                    : ""
+                      ? "col-md-10 open nhi he my-5 ps-lg-5"
+                      : ""
                 }
               >
                 <Base setpanel={setpanel} />
@@ -731,8 +711,8 @@ function TanIncome() {
                   isOpen === true
                     ? "col-md-8 open he my-5 ps-lg-5"
                     : isOpen === false
-                    ? "col-md-10 open nhi he my-5 ps-lg-5"
-                    : ""
+                      ? "col-md-10 open nhi he my-5 ps-lg-5"
+                      : ""
                 }
               >
                 <Militry setpanel={setpanel} />
@@ -746,8 +726,8 @@ function TanIncome() {
                   isOpen === true
                     ? "col-md-8 open he my-5 ps-lg-5"
                     : isOpen === false
-                    ? "col-md-10 open nhi he my-5 ps-lg-5"
-                    : ""
+                      ? "col-md-10 open nhi he my-5 ps-lg-5"
+                      : ""
                 }
               >
                 <Other setpanel={setpanel} />
@@ -755,10 +735,10 @@ function TanIncome() {
             </>
           ) : null}
           <ProfileInfo />
-                <div className="footerimage3">
-                <img src="https://bankerbroker.developer-oa.xyz/assets/img/footercity.svg" width="100%" alt="" />
-              </div>
-       
+          <div className="footerimage3">
+            <img src="https://bankerbroker.developer-oa.xyz/assets/img/footercity.svg" width="100%" alt="" />
+          </div>
+
         </div>
       </div>
     </>

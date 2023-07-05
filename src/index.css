@@ -1,12 +1,12 @@
 body {
   margin: 0;
-  font-family: "Poppins",sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -17,6 +17,12 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
+}
+.bg-hovering:hover {
+  background-color: rgb(58 132 253) !important;
+  box-shadow: inset 3px 0 0 rgb(58 132 253);
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
 }

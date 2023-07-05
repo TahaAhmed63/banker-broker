@@ -3,9 +3,9 @@ import Header from "../../../Layout/Header";
 import { AiOutlineArrowRight } from "react-icons/ai";
 
 import { BiDollar } from "react-icons/bi";
-import { MdModeEditOutline} from "react-icons/md";
-import { FaSearch} from "react-icons/fa";
-import { RiArrowDropDownLine} from "react-icons/ri";
+import { MdModeEditOutline } from "react-icons/md";
+import { FaSearch } from "react-icons/fa";
+import { RiArrowDropDownLine } from "react-icons/ri";
 // import RefSideBar from "./RefSideBar";
 import ProfileInfo from "../Profile/ProfileInfo";
 import Swal from "sweetalert2";
@@ -20,48 +20,48 @@ const Mortageinfo = () => {
 
   const location = useLocation();
   const mort =
-      location.pathname === "/mortage_info"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100 ";
-    const pers =
-      location.pathname === "/personal_info"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-    const cobo =
-      location.pathname === "/Co-Borrowers"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-    const inc =
-      location.pathname === "/Income"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-    const ass =
-      location.pathname === "/assets"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-    const real =
-      location.pathname === "/Real_state"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-    const Decl =
-      location.pathname === "/declaration"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-  
-    const demo =
-      location.pathname === "/demographic"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-  
-    const credit =
-      location.pathname === "/credit"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
-  
-    const review =
-      location.pathname === "/review"
-        ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
-        : "sidecolheight d-flex justify-content-around align-items-center w-100";
+    location.pathname === "/mortage_info"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100 ";
+  const pers =
+    location.pathname === "/personal_info"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+  const cobo =
+    location.pathname === "/Co-Borrowers"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+  const inc =
+    location.pathname === "/Income"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+  const ass =
+    location.pathname === "/assets"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+  const real =
+    location.pathname === "/Real_state"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+  const Decl =
+    location.pathname === "/declaration"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+
+  const demo =
+    location.pathname === "/demographic"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+
+  const credit =
+    location.pathname === "/credit"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
+
+  const review =
+    location.pathname === "/review"
+      ? "sidecolheight d-flex justify-content-around align-items-center w-100 sidecirclemain"
+      : "sidecolheight d-flex justify-content-around align-items-center w-100";
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggle = () => {
@@ -81,10 +81,10 @@ const Mortageinfo = () => {
   const history = useHistory();
   const [fieldsError, setFieldsError] = useState();
   const [loader, setLoader] = useState(false);
-    const [allPostData, setAllPostData] = useState();
+  const [allPostData, setAllPostData] = useState();
 
 
-// 
+  // 
   const postData = () => {
     const token = localStorage.getItem("usertoken");
 
@@ -106,20 +106,7 @@ const Mortageinfo = () => {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -137,25 +124,33 @@ const Mortageinfo = () => {
           behavior: "smooth",
         });
         // setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+      
       });
   };
   useEffect(() => {
     postData();
   }, []);
+
+
+
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
 
   // form Field State
 
@@ -251,7 +246,7 @@ const Mortageinfo = () => {
           user_profile,
         } = response?.data?.data;
         console.log(response.data.data, "response");
-        console.log(typeof(military_or_veteran),"military_or_veteran")
+        console.log(typeof (military_or_veteran), "military_or_veteran")
         setId(id);
         setFirstName(user_profile?.first_name);
         setMiddleName(middle_name);
@@ -438,7 +433,7 @@ const Mortageinfo = () => {
     }
   };
 
-  
+
   // const [mailingaddress_check, setMailingadress_check] = useState("");
   // // const Check_altname = (e) => {
   //   const value = e.target.value;
@@ -455,15 +450,15 @@ const Mortageinfo = () => {
   // };
 
 
-  console.log(military,"military_or_veteran")
+  console.log(military, "military_or_veteran")
   return (
     <>
       {loader ? <div className="loader"></div> : null}
       <Header />
-    
+
       <div className="container-fluid">
         <div className="row p-0">
-         <>
+          <>
             <FaBars
               class=" none"
               onClick={() => {
@@ -472,14 +467,16 @@ const Mortageinfo = () => {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                // props.OnHandleToggle();
-                handleToggle();
-              }}z
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
 
             <div
               className={
@@ -488,6 +485,16 @@ const Mortageinfo = () => {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+              
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <Progress percent={allPostData} status="actice" />
@@ -613,21 +620,21 @@ const Mortageinfo = () => {
           </>
 
           <div className={
-              isOpen === true
-                ? "col-md-8 open he my-2 mt-5 ps-lg-5"
-                : isOpen === false
+            isOpen === true
+              ? "col-md-8 open he my-2 mt-5 ps-lg-5"
+              : isOpen === false
                 ? "col-md-10 open nhi he my-2 mt-5 ps-lg-5"
                 : ""
-            }
+          }
           >
-          <div style={{width:"80%"}} className="row mx-4">
-              <h5 className="font26 mb-3 p-md-0" style={{fontSize:"20px", fontWeight:"500", color:"black"}}>Please fill your full, legal name</h5>
+            <div style={{ width: "95%" }} className="row mx-4">
+              <h5 className="font26 mb-3 p-md-0" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Please fill your full, legal name</h5>
               <div className="col-lg-3 col-md-5  p-md-0">
                 <input
                   className="form-control rounded-0 inputFont26"
                   type="text"
                   placeholder="First Name"
-                  style={{ padding: "12px 10px", fontSize:"14px" }}
+                  style={{ padding: "12px 10px", fontSize: "14px" }}
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
@@ -662,43 +669,43 @@ const Mortageinfo = () => {
                   onChange={(e) => setSuffix(e.target.value)}
                 />
               </div>
-          
+
 
               {fieldsError?.first_name
                 ? fieldsError?.first_name.map((e) => (
-                    <p className="text-danger">{e}</p>
-                  ))
+                  <p className="text-danger">{e}</p>
+                ))
                 : null}
               {fieldsError?.middle_name
                 ? fieldsError?.middle_name.map((e) => (
-                    <p className="text-danger">{e}</p>
-                  ))
+                  <p className="text-danger">{e}</p>
+                ))
                 : null}
               {fieldsError?.last_name
                 ? fieldsError?.last_name.map((e) => (
-                    <p className="text-danger">{e}</p>
-                  ))
+                  <p className="text-danger">{e}</p>
+                ))
                 : null}
               {fieldsError?.suffix
                 ? fieldsError?.suffix.map((e) => (
-                    <p className="text-danger">{e}</p>
-                  ))
+                  <p className="text-danger">{e}</p>
+                ))
                 : null}
-              
-                <div style={{margin:"0 10px"}} className=" mt-5 d-flex align-items-baseline p-0">
-                  {/* &nbsp; &nbsp; */}
-                  <input
-                    type="checkbox"
-                    checked = {altname}
-                    onChange={() => setAltname(!altname)}
-                  />
-                  &nbsp; &nbsp;
-                  <label style={{fontSize:"13px", fontWeight:"500"}} className="text-muted">
-                    I have alternate names
-                  </label>
-                  <br />
-                </div>
-              
+
+              <div style={{ margin: "0 10px" }} className=" mt-5 d-flex align-items-baseline p-0">
+                {/* &nbsp; &nbsp; */}
+                <input
+                  type="checkbox"
+                  checked={altname}
+                  onChange={() => setAltname(!altname)}
+                />
+                &nbsp; &nbsp;
+                <label style={{ fontSize: "13px", fontWeight: "500" }} className="text-muted">
+                  I have alternate names
+                </label>
+                <br />
+              </div>
+
               {altname === true ? (
                 <input
                   style={{ padding: "12px 10px", width: "50%" }}
@@ -710,7 +717,7 @@ const Mortageinfo = () => {
                 />
               ) : null}
 
-              <div style={{margin:"0 10px"}} className="mt-3 d-flex align-items-baseline p-0">
+              <div style={{ margin: "0 10px" }} className="mt-3 d-flex align-items-baseline p-0">
                 {/* &nbsp; &nbsp; */}
                 <input
                   type="checkbox"
@@ -718,7 +725,7 @@ const Mortageinfo = () => {
                   onChange={() => setNicName(!nicName)}
                 />
                 &nbsp; &nbsp;
-                <label style={{fontSize:"13px", fontWeight:"500"}} className="text-muted">I have a nickname</label>
+                <label style={{ fontSize: "13px", fontWeight: "500" }} className="text-muted">I have a nickname</label>
               </div>
 
               {nicName === true ? (
@@ -733,10 +740,10 @@ const Mortageinfo = () => {
               ) : null}
 
               <div className="mt-5 personalinfo_maxwidth">
-                <h5 className="font26" style={{fontSize:"20px", fontWeight:"500", color:"black"}}>Please fill your contact information</h5>
+                <h5 className="font26" style={{ fontSize: "20px", fontWeight: "500", color: "black" }}>Please fill your contact information</h5>
                 <div className="mt-4 contact_max">
                   <div className="input-group ">
-                    <span className="input-group-label contact-info-label ">
+                    <span className="form-control123 fm-control123 input-group-label contact-info-label ">
                       Email ID
                     </span>
                     <input
@@ -744,88 +751,103 @@ const Mortageinfo = () => {
                       name="email"
                       placeholder="Required"
                       formcontrolname="email"
-                      class="form-control text-lowercase input26clr"
+                      class="form-control123 text-lowercase input26clr ps-2"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   {fieldsError?.email
                     ? fieldsError?.email.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
+                      <p className="text-danger">{e}</p>
+                    ))
                     : null}
                   <div class="input-group mt-2">
-                    <span class="input-group-label contact-info-label ">
+                    <span class="form-control123 input-group-label contact-info-label ">
                       Cell Phone
                     </span>
                     <input
-                      type="number"
+                      type="tel"
                       name="phone"
                       formcontrolname="email"
-                      class="form-control text-lowercase input26clr"
+                      class="form-control123 text-lowercase input26clr"
                       value={phoneNumber}
-                      onChange={(e) => setPhoneNumber(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setPhoneNumber)}
                     />
+
                   </div>
                   {fieldsError?.cell_phone
                     ? fieldsError?.cell_phone.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
+                      <p className="text-danger">{e}</p>
+                    ))
                     : null}
                   <div class="input-group mt-2">
-                    <span class="input-group-label contact-info-label ">
+                    <span class="form-control123 input-group-label contact-info-label ">
                       Work Phone
                     </span>
-                    <input
+                    {/* <input
                       formcontrolname="workPhoneNumber"
                       name="work_phone"
                       inputmode="decimal"
                       autocomplete="nope"
-                      className="form-control input26clr"
+                      className="form-control123 input26clr"
                       id="workphone_input"
                       value={workPhone}
                       onChange={(e) => setWorkPhone(e.target.value)}
-                    />
+                      
+                      
+                    /> */}
+                    <input
+                      type="tel"
+                      formcontrolname="workPhoneNumber"
+                      name="work_phone"
+                      inputmode="decimal"
+                      autocomplete="nope"
+                      className="form-control123 input26clr"
+                      id="workphone_input"
+                      onChange={(e) => handlePhoneNumberChange(e, setWorkPhone)}
+                      value={workPhone}
+                    />{" "}
 
                     <input
                       placeholder="Ext."
                       formcontrolname="workExt"
                       name="ext"
                       inputmode="decimal"
-                      class="form-control max-width-100 input26clr"
+                      class="form-control123 max-width-100 input26clr ps-2"
                       value={extension}
                       onChange={(e) => setExtension(e.target.value)}
                     />
                   </div>
                   {fieldsError?.work_phone
                     ? fieldsError?.work_phone.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
+                      <p className="text-danger">{e}</p>
+                    ))
                     : null}
                   {fieldsError?.ext
                     ? fieldsError?.ext.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
+                      <p className="text-danger">{e}</p>
+                    ))
                     : null}
 
                   <div className="input-group mt-2">
-                    <span className="input-group-label contact-info-label ">
+                    <span className="form-control123 input-group-label contact-info-label ">
                       Home Phone
                     </span>
                     <input
+                      type="tel"
                       formcontrolname="homePhoneNumber"
                       name="home_phone"
                       inputmode="decimal"
                       autocomplete="nope"
-                      class="form-control input26clr"
+                      class="form-control123 input26clr"
                       value={homePhone}
-                      onChange={(e) => setHomePhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setHomePhone)}
                     />
                   </div>
                   {fieldsError?.home_phone
                     ? fieldsError?.home_phone.map((e) => (
-                        <p className="text-danger">{e}</p>
-                      ))
+                      <p className="text-danger">{e}</p>
+                    ))
                     : null}
 
                   <p
@@ -839,55 +861,55 @@ const Mortageinfo = () => {
                     I confirm that I have read and agree to the Consent to
                     contact
                   </p>
-                  <div className="row mt-5 ms-1">
-                    <h5 style={{fontWeight:"500", color:"black"}} className="p-md-0 ">Where do you live currently?</h5>
+                  <div className="row mt-5 ">
+                    <h5 style={{ fontWeight: "500", color: "black" }} className="p-md-0 ">Where do you live currently?</h5>
                     <div className="position-relative p-0">
-                    <input
-                    style={{fontSize:"13px", fontWeight:"500",padding:"0 28px"}}
-                      className="form-control rounded-0 mt-1 input26clr"
-                      type="email"
-                      placeholder="Email Address"
-                      value={address}
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                  <FaSearch  style={{fontSize:"15px", fontWeight:"600", position:"absolute",top:"16px", left:"6px"}}/>
-                  <MdModeEditOutline className="text-primary" style={{fontSize:"15px", fontWeight:"bold", position:"absolute",top:"16px", right:"15px"}}/>
+                      <input
+                        style={{ fontSize: "13px", fontWeight: "500", padding: "0 28px" }}
+                        className="form-control123 rounded-0 mt-1 input26clr"
+                        type="email"
+                        placeholder="Email Address"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
+                      <FaSearch style={{ fontSize: "13px", fontWeight: "600", position: "absolute", top: "15px", left: "9px" }} />
+                      <MdModeEditOutline className="text-primary" style={{ fontSize: "16px", fontWeight: "bold", position: "absolute", top: "14px", right: "15px" }} />
                     </div>
                     {fieldsError?.address
                       ? fieldsError?.address.map((e) => (
-                          <p className="text-danger">{e}</p>
-                        ))
+                        <p className="text-danger">{e}</p>
+                      ))
                       : null}
                     <div className="mt-4 d-flex align-items-baseline p-0">
-                  <input
+                      <input
                         type="checkbox"
                         checked={mailing}
                         onClick={() => setMailing(!mailing)}
                       />
                       &nbsp; &nbsp;
-                      <label style={{fontSize:"13px", fontWeight:"600", color:"black"}} className="h6 text-muted">
+                      <label style={{ fontSize: "13px", fontWeight: "600", color: "black" }} className="h6 text-muted">
                         My mailing address is the same as my current address
                       </label>
                     </div>
 
                     <div className="mt-3 mx-0 p-0">
                       <div className="position-relative p-0">
-                      <input
-                      style={{fontSize:"13px", fontWeight:"500",padding:"0 28px"}}
-                        className="form-control rounded-0 mt-1 input26clr"
-                        type="text"
-                        placeholder="Enter Mailing Address "
-                        disabled={mailing}
-                        value={mailingAddress}
-                        onChange={(e) => setMailingAddress(e.target.value)}
-                      />
-                      <FaSearch  style={{fontSize:"15px", fontWeight:"600", position:"absolute",top:"12px", left:"6px"}}/>
+                        <input
+                          style={{ fontSize: "13px", fontWeight: "500", padding: "0 28px" }}
+                          className="form-control123 rounded-0 mt-1 input26clr"
+                          type="text"
+                          placeholder="Enter Mailing Address "
+                          disabled={mailing}
+                          value={mailingAddress}
+                          onChange={(e) => setMailingAddress(e.target.value)}
+                        />
+                        <FaSearch style={{ fontSize: "13px", fontWeight: "600", position: "absolute", top: "10px", left: "9px" }} />
                       </div>
-                        {fieldsError?.have_mailing_address
-                      ? fieldsError?.have_mailing_address.map((e) => (
+                      {fieldsError?.have_mailing_address
+                        ? fieldsError?.have_mailing_address.map((e) => (
                           <p className="text-danger">{e}</p>
                         ))
-                      : null}
+                        : null}
                     </div>
                   </div>
                 </div>
@@ -904,7 +926,7 @@ const Mortageinfo = () => {
                     <div className="col-md-3">
                       <div className="personalinfo_property mx-auto">
                         <input
-                        className="btn261"
+                          className="btn2 personalinfo_property61"
                           label="Own"
                           type="radio"
                           id="male"
@@ -919,7 +941,7 @@ const Mortageinfo = () => {
                     <div className="col-md-2">
                       <div className="personalinfo_property mx-auto">
                         <input
-                        className="btn261"
+                          className="btn2 personalinfo_property61"
                           label="Rent"
                           type="radio"
                           id="female"
@@ -950,15 +972,15 @@ const Mortageinfo = () => {
                     </div>
                     {fieldsError?.own_or_rent
                       ? fieldsError?.own_or_rent.map((e) => (
-                          <p className="text-danger">{e}</p>
-                        ))
+                        <p className="text-danger">{e}</p>
+                      ))
                       : null}
                     {rent === "rent" ? (
                       <div className="row">
-                        <h5 style={{fontSize:"1px", fontWeight:"500"}} className="mt-3">What is the monthly rent??</h5>
+                        <h5 style={{ fontSize: "1px", fontWeight: "500" }} className="mt-3">What is the monthly rent??</h5>
                         <div className="col-md-8">
                           <div className="input-group mt-2">
-                              <BiDollar style={{fontSize:"18px",fontWeight:"bold", position:"absolute",left:"5px", bottom:"12px", color:"black", zIndex:"123"}}/>
+                            <BiDollar style={{ fontSize: "18px", fontWeight: "bold", position: "absolute", left: "5px", bottom: "12px", color: "black", zIndex: "123" }} />
                             <input
                               type="number"
                               autocomplete="nope"
@@ -971,7 +993,7 @@ const Mortageinfo = () => {
                       </div>
                     ) : (
                       <>
-                        <h5 style={{fontWeight:"500", color:"black"}} className="mt-3">How long did you live there?</h5>
+                        <h5 style={{ fontWeight: "500", color: "black" }} className="mt-3">How long did you live there?</h5>
 
                         <div className="row ">
                           <div className="col-md-8">
@@ -994,42 +1016,43 @@ const Mortageinfo = () => {
                             </div>
                             {fieldsError?.how_long_live_y_there
                               ? fieldsError?.how_long_live_y_there.map((e) => (
-                                  <p className="text-danger">{e}</p>
-                                ))
+                                <p className="text-danger">{e}</p>
+                              ))
                               : null}
                           </div>
                         </div>
                         <div className="row">
                           <div className="col-md-6">
                             <div class="input-group mt-2">
-                            <div className="position-relative ">
-                            <RiArrowDropDownLine style={{fontSize:"30px", fontWeight:"600", position:"absolute",top:"2px", right:"6px"}} />
-                              <select
-                              style={{padding:"20px"}}
-                                autocomplete="nope"
-                                class="form-control  input26clr"
-                                value={durationOfLivingMonth}
-                                onChange={(e) =>
-                                  setDurationOfLivingMonth(e.target.value)
-                                }
-                              >
-                               
-                                <option selected disabled>
-                                  Select Month
-                                </option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                              </select>
-                            </div>
+                              <div className="position-relative ">
+                                {/* <RiArrowDropDownLine style={{ fontSize: "30px", fontWeight: "600", position: "absolute", top: "2px", right: "6px" }} /> */}
+                                <select
+                                  style={{ padding: "20px" }}
+                                  autocomplete="nope"
+                                  // className="form-control  input26clr text-muted"
+                                  class="form-select w-100 p-2" aria-label="Default select example"
+                                  value={durationOfLivingMonth}
+                                  onChange={(e) =>
+                                    setDurationOfLivingMonth(e.target.value)
+                                  }
+                                >
+
+                                  <option selected disabled>
+                                    Select Month
+                                  </option>
+                                  <option >1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                  <option>7</option>
+                                  <option>8</option>
+                                  <option>9</option>
+                                  <option>10</option>
+                                  <option>11</option>
+                                </select>
+                              </div>
 
                               <span
                                 className="input-group-label contact-info-label "
@@ -1041,8 +1064,8 @@ const Mortageinfo = () => {
                           </div>
                           {fieldsError?.how_long_live_m_there
                             ? fieldsError?.how_long_live_m_there.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                         </div>
                       </>
@@ -1056,9 +1079,9 @@ const Mortageinfo = () => {
                     </h6>
                     <div className="d-flex">
                       <div className="personalinfo_property">
-                        <input 
-                        style={{marginRight:"20px"}}
-                        className="btn261"
+                        <input
+                          style={{ marginRight: "20px" }}
+                          className="btn2 btn-link personalinfo_property61"
                           label="Yes"
                           type="radio"
                           id="male"
@@ -1070,13 +1093,13 @@ const Mortageinfo = () => {
                       </div>
                       <div className="personalinfo_property">
                         <input
-                        className="btn261"
+                          className="btn-link personalinfo_property61"
                           label="No"
                           type="radio"
                           id="male"
                           name="agent"
                           value={"no"}
-                          checked = {military === false ? true : false}
+                          checked={military === false ? true : false}
                           onClick={() => setMilitary(false)}
                         />
                       </div>
@@ -1084,7 +1107,7 @@ const Mortageinfo = () => {
 
                     {military === true ? (
                       <div className="row ">
-                        <h5 style={{fontSize:"15px", fontWeight:"600", color:"black"}} className="mt-3">
+                        <h5 style={{ fontSize: "15px", fontWeight: "600", color: "black" }} className="mt-3">
                           What is your current military status?
                         </h5>
                         <select
@@ -1101,13 +1124,13 @@ const Mortageinfo = () => {
                       </div>
                     ) : null}
 
-                    <h5 style={{fontWeight:"500", color:"black"}} className="mt-4">What's your residency type?</h5>
+                    <h5 style={{ fontWeight: "500", color: "black" }} className="mt-4">What's your residency type?</h5>
                     <div className="row mt-3">
                       <div className=" maindiv26 ">
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn263"
+                              className="btn263"
                               label="US Citizen"
                               type="radio"
                               id="male"
@@ -1123,7 +1146,7 @@ const Mortageinfo = () => {
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn264"
+                              className="btn264"
                               label="Permanent Resident Alien"
                               type="radio"
                               id="female"
@@ -1141,7 +1164,7 @@ const Mortageinfo = () => {
                         <div>
                           <div className="personalinfo_property  mx-2">
                             <input
-                            className="btn265"
+                              className="btn265"
                               label="Non Permanent Resident Alien"
                               type="radio"
                               id="other"
@@ -1159,17 +1182,17 @@ const Mortageinfo = () => {
                       </div>
                       {fieldsError?.residency_type
                         ? fieldsError?.residency_type.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
 
-                      <h5 style={{fontWeight:"500", color:"black"}} className="mt-3">What's your marital status?</h5>
+                      <h5 style={{ fontWeight: "500", color: "black" }} className="mt-3">What's your marital status?</h5>
 
                       <div className="maindiv26 mt-2">
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn263"
+                              className="btn263"
                               label="Married"
                               type="radio"
                               id="married"
@@ -1187,7 +1210,7 @@ const Mortageinfo = () => {
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn263"
+                              className="btn263"
                               label="Unmarried"
                               type="radio"
                               id="unmarried"
@@ -1206,7 +1229,7 @@ const Mortageinfo = () => {
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn263"
+                              className="btn263"
                               label="Separated"
                               type="radio"
                               id="separated"
@@ -1224,7 +1247,7 @@ const Mortageinfo = () => {
                         <div>
                           <div className="personalinfo_property mx-2">
                             <input
-                            className="btn265"
+                              className="btn265"
                               label="Do Not Wish To Provide"
                               type="radio"
                               id="Dont wish"
@@ -1244,8 +1267,8 @@ const Mortageinfo = () => {
                       </div>
                       {fieldsError?.marital_status
                         ? fieldsError?.marital_status.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       {unmarried === true ? (
                         <div className="mt-3 d-flex align-items-baseline">
@@ -1259,27 +1282,29 @@ const Mortageinfo = () => {
                         </div>
                       ) : null}
                     </div>
-                    <h5 style={{fontWeight:"500", color:"black"}} className="mt-4">Do you have any dependents?</h5>
+                    <h5 style={{ fontWeight: "500", color: "black" }} className="mt-4">Do you have any dependents?</h5>
                     <div className="d-flex mt-3">
                       <div className="personalinfo_property">
                         <input
-                        style={{marginRight:"20px"}}
-                        className="btn261"
+                          style={{ marginRight: "20px" }}
+                          // className="btn261"
+                          className="btn2 btn-link personalinfo_property61"
                           label="Yes"
                           type="radio"
-                          id="male"
-                          name="agent"
+                          id="male1"
+                          name="agent1"
                           checked={depend === true ? true : false}
                           onClick={() => setDepend(true)}
                         />
                       </div>
                       <div className="personalinfo_property">
                         <input
-                         className="btn261"
+                          // className="btn261"
+                          className="btn2 btn-link personalinfo_property61"
                           label="No"
                           type="radio"
-                          id="male"
-                          name="agent"
+                          id="male1"
+                          name="agent1"
                           checked={depend === false ? true : false}
                           onClick={() => setDepend(false)}
                         />
@@ -1288,9 +1313,9 @@ const Mortageinfo = () => {
 
                     {depend === true ? (
                       <div className="mt-3 col-md-10">
-                        <h5 style={{fontWeight:"500", color:"black"}}>How many dependents and what are their ages?</h5>
+                        <h5 style={{ fontWeight: "500", color: "black" }}>How many dependents and what are their ages?</h5>
 
-                        <div class="input-group mt-3" style={{width:"400px"}}>
+                        <div class="input-group mt-3" style={{ width: "400px" }}>
                           <input
                             className="form-control input26clr"
                             value={numberOfDepends}
@@ -1323,26 +1348,26 @@ const Mortageinfo = () => {
                 </div>
                 <div className="mt-3">
                   <label className="text-secondary h6">
-                    <span style={{fontSize:"13px", fontWeight:"500"}}>Next is </span><small style={{fontSize:"14px", fontWeight:"600", color:"black"}}>Co-Borrowers</small>
+                    <span style={{ fontSize: "13px", fontWeight: "500" }}>Next is </span><small style={{ fontSize: "14px", fontWeight: "600", color: "black" }}>Co-Borrowers</small>
                   </label>
                   <br />
-                  <button style={{fontSize:"15px", fontWeight:"600", borderRadius:"6px"}} className="btn btn-primary  mt-2"
+                  <button style={{ fontSize: "15px", fontWeight: "600", borderRadius: "6px" }} className="btn btn-primary  mt-2"
                     onClick={onSubmit}>
                     Save & Continue &nbsp;
-                    <AiOutlineArrowRight style={{fontSize:"15px", fontWeight:"600"}}/>
+                    <AiOutlineArrowRight style={{ fontSize: "15px", fontWeight: "600" }} />
                   </button>
                 </div>
-               
+
                 {/*  */}
               </div>
             </div>
             <br />
             <br />
             <br />
-                <div className="border-bottom" ></div>
-                <img src={footer} alt="img"/>
+            <div className="border-bottom" ></div>
+            <img src={footer} alt="img" />
           </div>
-          <ProfileInfo/>
+          <ProfileInfo />
         </div>
       </div>
     </>

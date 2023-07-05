@@ -15,7 +15,7 @@ function CoBorrower() {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [bund, setBund] = useState("");
-  
+
   const [allPostData, setAllPostData] = useState();
   const application_id = localStorage.getItem("assignId");
   const reviewData = new FormData();
@@ -42,20 +42,7 @@ function CoBorrower() {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -73,22 +60,33 @@ function CoBorrower() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+     
       });
   };
+
+
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
+
+
+
+
   useEffect(() => {
     postData();
   }, []);
@@ -231,20 +229,7 @@ function CoBorrower() {
         setGetborrower(response?.data?.data);
         if (response?.data?.status === true) {
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -260,20 +245,7 @@ function CoBorrower() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+       
       });
   };
   useEffect(() => {
@@ -520,14 +492,16 @@ function CoBorrower() {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                // props.OnHandleToggle();
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
 
             <div
               className={
@@ -536,6 +510,16 @@ function CoBorrower() {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <Progress percent={allPostData} status="actice" />
@@ -664,14 +648,14 @@ function CoBorrower() {
               isOpen === true
                 ? "col-md-8 open he mb-2 mt-5 ps-lg-5"
                 : isOpen === false
-                ? "col-md-10 open nhi he mb-2 mt-5 ps-lg-5"
-                : ""
+                  ? "col-md-10 open nhi he mb-2 mt-5 ps-lg-5"
+                  : ""
             }
           >
             <div className="row mx-3  pb-4">
               {showfirstform === true ? null : (
                 <>
-                  <h5 style={{fontWeight:'500'}} className="font26 mb-3 p-md-0">Co-Borrowers</h5>
+                  <h5 style={{ fontWeight: '500' }} className="font26 mb-3 p-md-0">Co-Borrowers</h5>
                   <p className="font26p">No Co-Borrower has been added yet</p>
                   {getborrower ? (
                     getborrower?.map((e) => {
@@ -722,7 +706,7 @@ function CoBorrower() {
                   )}
                   <div className="personalinfo_property Divinp26 mx-auto">
                     <input
-                    className="inp26 fw-bold"
+                      className="inp26 fw-bold"
                       label="Add Co-Borrower"
                       type="radio"
                       id="male"
@@ -743,24 +727,24 @@ function CoBorrower() {
                       I am applying solely
                     </label>
                   </div>
-                  <label style={{fontSize:"13px", fontWeight:'500', padding:"0"}}>
-                    Next is <span style={{color:"black", fontSize:"14px", fontWeight:'600'}}>Income</span>
+                  <label style={{ fontSize: "13px", fontWeight: '500', padding: "0" }}>
+                    Next is <span style={{ color: "black", fontSize: "14px", fontWeight: '600' }}>Income</span>
                   </label>{" "}
                   <br />
                   <button
-                  style={{fontSize:"15px", fontWeight:"600"}}
+                    style={{ fontSize: "15px", fontWeight: "600" }}
                     className="btn btn-primary btn27 rounded-0 mt-2 py-2 px-3 fw-bolder"
                     onClick={() => Submit_Borrower()}
                   >
                     Save & Continue &nbsp;
-                    <AiOutlineArrowRight style={{fontSize:"18px", fontWeight:"600"}}/>
+                    <AiOutlineArrowRight style={{ fontSize: "18px", fontWeight: "600" }} />
                   </button>{" "}
                 </>
               )}
               {showfirstform ? (
                 <div className="mt-3 divwidth26">
                   <>
-                    <h5 style={{fontSize:"20px", fontWeight:"500", color:"black"}} >Fill Co-Borrower's information</h5>
+                    <h5 style={{ fontSize: "20px", fontWeight: "500", color: "black" }} >Fill Co-Borrower's information</h5>
                     <div className="mt-4">
                       <div class="input-group ">
                         <span class="input-group-label contact-info-label ">
@@ -777,8 +761,8 @@ function CoBorrower() {
 
                       {bund?.cob_first_name
                         ? bund?.cob_first_name.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label ">
@@ -794,8 +778,8 @@ function CoBorrower() {
 
                       {bund?.cob_last_name
                         ? bund?.cob_last_name.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label ">
@@ -811,25 +795,26 @@ function CoBorrower() {
 
                       {bund?.cob_email
                         ? bund?.cob_email.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                       <div class="input-group mt-2">
                         <span class="input-group-label contact-info-label ">
                           PHONE
                         </span>
                         <input
-                          type="number"
+                          type="tel"
                           class="form-control rounded-0 input26clr"
                           placeholder="required"
-                          onChange={(e) => setCob_phone(e.target.value)}
+                          onChange={(e) => handlePhoneNumberChange(e, setCob_phone)}
+                          value={cob_phone}
                         />{" "}
                       </div>
 
                       {bund?.cob_phone
                         ? bund?.cob_phone.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
 
                       <div class="form-check my-3">
@@ -845,16 +830,16 @@ function CoBorrower() {
 
                       {bund?.complete_task
                         ? bund?.complete_task.map((e) => (
-                            <p className="text-danger">{e}</p>
-                          ))
+                          <p className="text-danger">{e}</p>
+                        ))
                         : null}
                     </div>
                     {spouse === 0 ? null : (
                       <>
-                        <h5 style={{fontSize:"20px", fontWeight:"500", color:"black"}} className="mt-5">
+                        <h5 style={{ fontSize: "20px", fontWeight: "500", color: "black" }} className="mt-5">
                           Fill his/her spouse's information
                         </h5>
-                        <div  className="mt-4 w-100">
+                        <div className="mt-4 w-100">
                           <div class="input-group ">
                             <span class="input-group-label contact-info-label ">
                               FIRST NAME
@@ -870,8 +855,8 @@ function CoBorrower() {
 
                           {bund?.sp_first_name
                             ? bund?.sp_first_name.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label ">
@@ -889,8 +874,8 @@ function CoBorrower() {
 
                           {bund?.sp_last_name
                             ? bund?.sp_last_name.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label ">
@@ -907,25 +892,26 @@ function CoBorrower() {
 
                           {bund?.sp_email
                             ? bund?.sp_email.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                           <div class="input-group mt-2">
                             <span class="input-group-label contact-info-label ">
                               PHONE
                             </span>
                             <input
-                              type="number"
+                              type="tel"
                               class="form-control rounded-0 input26clr"
                               placeholder="required"
-                              onChange={(e) => setSp_phone(e.target.value)}
+                              onChange={(e) => handlePhoneNumberChange(e, setSp_phone)}
+                              value={sp_phone}
                             />{" "}
                           </div>
 
                           {bund?.sp_phone
                             ? bund?.sp_phone.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
 
                           <div class="form-check my-3">
@@ -944,27 +930,27 @@ function CoBorrower() {
 
                           {bund?.spouse
                             ? bund?.spouse.map((e) => (
-                                <p className="text-danger">{e}</p>
-                              ))
+                              <p className="text-danger">{e}</p>
+                            ))
                             : null}
                         </div>
                       </>
                     )}
                     <div className=" mt-4 ">
-                     <div className="d-flex mb-5 p-0 w-100">
-                     <button
-                        className="btn btn-primary rounded-0 mx-2 px-md-5 w-100"
-                        onClick={() => Add_Borrower()}
-                      >
-                        INVITE
-                      </button>
-                      <button
-                        className="btn btn-light rounded-0 mx-2 px-md-5 border w-100"
-                        onClick={() => setshowfirstform(false)}
-                      >
-                        CANCEL
-                      </button>
-                     </div>
+                      <div className="d-flex mb-5 p-0 w-100">
+                        <button
+                          className="btn btn-primary rounded-0 mx-2 px-md-5 w-100"
+                          onClick={() => Add_Borrower()}
+                        >
+                          INVITE
+                        </button>
+                        <button
+                          className="btn btn-light rounded-0 mx-2 px-md-5 border w-100"
+                          onClick={() => setshowfirstform(false)}
+                        >
+                          CANCEL
+                        </button>
+                      </div>
                     </div>
                   </>
                 </div>
@@ -972,13 +958,13 @@ function CoBorrower() {
             </div>
             <br />
 
-            <div style={{marginTop:"160px"}}>
-                <hr />
-                <img src={footer} alt="img" />
+            <div style={{ marginTop: "160px" }}>
+              <hr />
+              <img src={footer} alt="img" />
             </div>
           </div>
           <ProfileInfo />
-         </div>
+        </div>
       </div>
     </>
   );

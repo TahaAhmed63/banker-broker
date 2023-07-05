@@ -78,20 +78,7 @@ const TanPersonalInfo = () => {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+       
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -358,6 +345,24 @@ const TanPersonalInfo = () => {
         });
       });
   };
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
 
   return (
     <>
@@ -375,13 +380,16 @@ const TanPersonalInfo = () => {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
               className={
                 isOpen === true
@@ -389,6 +397,16 @@ const TanPersonalInfo = () => {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <br />
@@ -497,7 +515,7 @@ const TanPersonalInfo = () => {
               isOpen === true
                 ? "col-md-8 open he mt-5 mb-2 ps-lg-5"
                 : isOpen === false
-                  ? "col-md-12 open nhi he mt-5 mb-2 ps-lg-5"
+                  ? "col-md-10 open nhi he mt-5 mb-2 ps-lg-5"
                   : ""
             }
           >
@@ -633,12 +651,12 @@ const TanPersonalInfo = () => {
                       Cell Phone
                     </span>
                     <input
-                      type="number"
+                      type="type"
                       name="phone"
                       formcontrolname="phone"
                       className="form-control text-lowercase req-color7"
                       value={Phone}
-                      onChange={(e) => setPhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setPhone)}
                     />
                   </div>
                   <div className="input-group mt-2">
@@ -646,6 +664,7 @@ const TanPersonalInfo = () => {
                       Work Phone
                     </span>
                     <input
+                    type="tel"
                       formcontrolname="workPhoneNumber "
                       name="work_phone"
                       inputmode="decimal"
@@ -653,7 +672,8 @@ const TanPersonalInfo = () => {
                       className="form-control req-color7"
                       id="workphone_input"
                       value={WorkPhone}
-                      onChange={(e) => setWorkPhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setWorkPhone)}
+                      
                     />
 
                     <input
@@ -678,7 +698,7 @@ const TanPersonalInfo = () => {
                       autocomplete="nope"
                       className="form-control req-color7"
                       value={HomePhone}
-                      onChange={(e) => setHomePhone(e.target.value)}
+                      onChange={(e) => handlePhoneNumberChange(e, setHomePhone)}
                     />
                   </div>
 
@@ -824,10 +844,10 @@ const TanPersonalInfo = () => {
                           <label id="land_fname">Phone Number</label>
                           <input
                             className="height input-group req-color7"
-                            type="number"
+                            type="tel"
                             placeholder="(949) 298-1501"
                             value={LandlordPhone}
-                            onChange={(e) => setLandlordPhone(e.target.value)}
+                            onChange={(e) => handlePhoneNumberChange(e,setLandlordPhone)}
                           />
                         </div>
 
@@ -921,10 +941,10 @@ const TanPersonalInfo = () => {
                           <label id="land_fname">Phone Number</label>
                           <input
                             className="form-control req-color7 height3"
-                            type="number"
+                            type="tel"
                             placeholder="(949) 298-1501"
                             value={EmergencyPhone}
-                            onChange={(e) => setEmergencyPhone(e.target.value)}
+                            onChange={(e) => handlePhoneNumberChange(e,setEmergencyPhone)}
                           />
                         </div>
                       </div>

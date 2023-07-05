@@ -41,7 +41,7 @@ const Borrowerlogin = () => {
         );
         if (response.data.status === true) {
           setLoader(false);
-          history.push("/selectType");
+          history.push("/dashboard");
           Swal.fire({
             toast: true,
             icon: "success",
@@ -76,12 +76,13 @@ const Borrowerlogin = () => {
         }
       })
       .catch(function (error) {
+        console.log(error,"error")
         setLoader(false);
 
         Swal.fire({
           toast: true,
           icon: "success",
-          title: error,
+          title: error?.response?.data?.message,
           animation: true,
           position: "top-right",
           showConfirmButton: false,

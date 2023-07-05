@@ -75,20 +75,7 @@ const TanAdditionalInfo = () => {
           console.log(response?.data?.message, "response?.data?.message");
           // history.push('/new_mortage')
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+      
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -347,8 +334,11 @@ const TanAdditionalInfo = () => {
                 }}
               />
 
-              <FaBars
-                class=" block"
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
                 id="topnav-hamburger-icon"
                 onClick={() => {
                   handleToggle();
@@ -361,6 +351,16 @@ const TanAdditionalInfo = () => {
                     : "d-none"
                 }
               >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
                 <div className="px-4 my-3">
                   <Link to="#">Dashboard</Link>
                   <br />

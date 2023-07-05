@@ -16,9 +16,10 @@ return (
                 <div className="mt-3">
                   <h4 className='mb-3' style={{fontWeight:"600", fontSize:"20px"}}>Financial Institution</h4>
                   <input
-                    type="text"
+                    type="number"
                     className="form-control rounded-0 hinpt"
                     value={finalInstitute}
+                    max="9"
                     placeholder="Required"
                     onChange={(e) => setFinalInstitute((perv)=>({...perv,finalInstitute:(e.target.value)}))}
                   />

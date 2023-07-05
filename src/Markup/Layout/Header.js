@@ -122,7 +122,7 @@ const Header = () => {
                     <Link  to={"#"}>
                     <p className="mt-3 mx-2"><IoNotifications size={24} /></p>
                     </Link>
-                <Link to={'/new_mortage'}>
+                <Link to={'/dashboard'}>
                     <p className="mt-3 mx-2"><IoHomeSharp size={24} /></p>
                 </Link>
                   </div>

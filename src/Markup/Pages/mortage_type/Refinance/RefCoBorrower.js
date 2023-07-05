@@ -73,6 +73,26 @@ function RefCoBorrower() {
     console.log(isOpen, "huihui");
   };
 
+
+  const handlePhoneNumberChange = (event, state) => {
+    const inputPhoneNumber = event.target.value.replace(/\D/g, ''); // remove non-numeric characters
+    if (inputPhoneNumber.length > 10) {
+      inputPhoneNumber = inputPhoneNumber.slice(0, 10); // truncate to 10 digits
+    }
+    let formattedPhoneNumber = '';
+    if (inputPhoneNumber.length > 3) {
+      formattedPhoneNumber = `(${inputPhoneNumber.substring(0, 3)})`;
+      if (inputPhoneNumber.length > 6) {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3, 6)}-${inputPhoneNumber.substring(6)}`;
+      } else {
+        formattedPhoneNumber += ` ${inputPhoneNumber.substring(3)}`;
+      }
+    } else {
+      formattedPhoneNumber = inputPhoneNumber;
+    }
+    state(formattedPhoneNumber);
+  }
+
   const Assign_id = localStorage.getItem("assignId");
   const history = useHistory();
   const [loader, setLoader] = useState(false);
@@ -229,20 +249,7 @@ function RefCoBorrower() {
         setGetborrower(response?.data?.data);
         if (response?.data?.status === true) {
           setLoader(false);
-          Swal.fire({
-            toast: true,
-            icon: "success",
-            title: response?.data?.message,
-            animation: true,
-            position: "top-right",
-            showConfirmButton: false,
-            timer: 3000,
-            timerProgressBar: true,
-            didOpen: (toast) => {
-              toast.addEventListener("mouseenter", Swal.stopTimer);
-              toast.addEventListener("mouseleave", Swal.resumeTimer);
-            },
-          });
+         
           window.scrollTo({
             top: 0,
             behavior: "smooth",
@@ -258,20 +265,7 @@ function RefCoBorrower() {
           behavior: "smooth",
         });
         setBund(error?.response?.data?.errors);
-        Swal.fire({
-          toast: true,
-          icon: "error",
-          title: error?.response?.data?.message,
-          animation: true,
-          position: "top-right",
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
+     
       });
   };
   useEffect(() => {
@@ -451,14 +445,16 @@ function RefCoBorrower() {
               }}
             />
 
-            <FaBars
-              class=" block"
-              id="topnav-hamburger-icon"
-              onClick={() => {
-                // props.OnHandleToggle();
-                handleToggle();
-              }}
-            />
+<FaBars
+                class={
+                isOpen === true
+                ?" none" :"block"}
+                style={{paddingRight:"1149px"}}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
             <div
               className={
                 isOpen === true
@@ -466,6 +462,16 @@ function RefCoBorrower() {
                   : "d-none"
               }
             >
+
+<FaBars
+                class=" block"
+                style={{ marginLeft: "153px", marginTop: "13px" }}
+                id="topnav-hamburger-icon"
+                onClick={() => {
+                  handleToggle();
+                }}
+              />
+
               <div className="px-4 my-3">
                 <Link to="#">Dashboard</Link>
                 <Progress percent={50} status="actice" />
@@ -755,10 +761,11 @@ function RefCoBorrower() {
                           PHONE
                         </span>
                         <input
-                          type="number"
+                          type="tel"
                           className="form-control text-lowercase"
                           placeholder="required "
-                          onChange={(e) => setCob_phone(e.target.value)}
+                          onChange={(e) => handlePhoneNumberChange(e, setCob_phone)}
+                          value={cob_phone}
                         />{" "}
                       </div>
 
@@ -851,10 +858,11 @@ function RefCoBorrower() {
                               PHONE
                             </span>
                             <input
-                              type="number"
-                              className="form-control text-lowercase"
+                              type="tel"
+                              class="form-control rounded-0 input26clr"
                               placeholder="required"
-                              onChange={(e) => setSp_phone(e.target.value)}
+                              onChange={(e) => handlePhoneNumberChange(e, setSp_phone)}
+                              value={sp_phone}
                             />{" "}
                           </div>
 

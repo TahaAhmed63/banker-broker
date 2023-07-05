@@ -6,7 +6,9 @@ import { FaArrowRight, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import axios from "axios";
 import Baseurl from "../../Baseurl";
+// import TanSideBar from "./mortage_type/heloc/Tanent/TanSideBar";
 import { useHistory } from "react-router-dom";
+import SidebarDash from "./mortage_type/heloc/Tanent/SidebarDash";
 
 function Dashboard() {
   const history = useHistory();
@@ -89,6 +91,11 @@ function Dashboard() {
     getData();
   }, []);
 
+
+
+
+  
+
   const Data = new FormData();
   Data.append("Application_id", Assign_id);
 
@@ -101,18 +108,19 @@ function Dashboard() {
       {loader ? <div className="loader"></div> : null}
       <Header />
       <hr />
-      <div className="container-fluid ps-5">
+      <div className="container-fluid ps-4">
         <div className="row">
-          <div className="col-md-8 my-5 ps-lg-5 ">
+          <SidebarDash />
+          <div className="col-md-8 new-mr1">
             <div className="row">
-              <div className="offset-md-10">
+              <div className="">
                 <button className="btn btn-primary px-4">
                   New <FaArrowRight />
                 </button>
               </div>
             </div>
             <div className="row">
-              <Table striped bordered hover className="mt-2">
+              <Table striped bordered hover className="m-2">
                 <thead>
                   <tr>
                     <th className="text-center">#</th>
@@ -126,129 +134,129 @@ function Dashboard() {
                   {/* purchase */}
                   {mortgage_purchase
                     ? mortgage_purchase?.map((e, i) => {
-                        const date = new Date(e?.created_at.toString());
-                        const options = {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          second: "2-digit",
-                        };
-                        const formattedDate = date.toLocaleString(
-                          "en-US",
-                          options
-                        );
-                        return (
-                          <>
-                            <tr>
-                              <td className="text-center">{e?.id}</td>
-                              <td className="text-center">Purchase</td>
-                              <td className="text-center">{formattedDate}</td>
-                              <td>
-                                <p
-                                  className="text-center"
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() =>
-                                    history.push(
-                                      `/reviewapplication/review/${e.id}/mpa`
-                                    )
-                                  }
-                                >
-                                  View <FaEye />
-                                </p>
-                              </td>
-                            </tr>
-                          </>
-                        );
-                      })
+                      const date = new Date(e?.created_at.toString());
+                      const options = {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      };
+                      const formattedDate = date.toLocaleString(
+                        "en-US",
+                        options
+                      );
+                      return (
+                        <>
+                          <tr>
+                            <td className="text-center">{e?.id}</td>
+                            <td className="text-center">Purchase</td>
+                            <td className="text-center">{formattedDate}</td>
+                            <td>
+                              <p
+                                className="text-center"
+                                style={{ cursor: "pointer" }}
+                                onClick={() =>
+                                  history.push(
+                                    `/reviewapplication/review/${e.id}/mpa`
+                                  )
+                                }
+                              >
+                                View <FaEye />
+                              </p>
+                            </td>
+                          </tr>
+                        </>
+                      );
+                    })
                     : null}
                   {/* refinance */}
                   {/* for map */}
                   {mortgage_refinance
                     ? mortgage_refinance?.map((e, i) => {
-                        const date = new Date(e?.created_at.toString());
-                        const options = {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          second: "2-digit",
-                        };
-                        const formattedDate = date.toLocaleString(
-                          "en-US",
-                          options
-                        );
-                        return (
-                          <>
-                            <tr>
-                              <td className="text-center">{e?.id}</td>
-                              <td className="text-center">Refinance</td>
-                              <td className="text-center">{formattedDate}</td>
-                              <td>
-                                <p
-                                  className="text-center"
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() =>
-                                    history.push(
-                                      `/reviewapplication/review/${e.id}/mra`
-                                    )
-                                  }
-                                >
-                                  View <FaEye />
-                                </p>
-                              </td>
-                            </tr>
-                          </>
-                        );
-                      })
+                      const date = new Date(e?.created_at.toString());
+                      const options = {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      };
+                      const formattedDate = date.toLocaleString(
+                        "en-US",
+                        options
+                      );
+                      return (
+                        <>
+                          <tr>
+                            <td className="text-center">{e?.id}</td>
+                            <td className="text-center">Refinance</td>
+                            <td className="text-center">{formattedDate}</td>
+                            <td>
+                              <p
+                                className="text-center"
+                                style={{ cursor: "pointer" }}
+                                onClick={() =>
+                                  history.push(
+                                    `/reviewapplication/review/${e.id}/mra`
+                                  )
+                                }
+                              >
+                                View <FaEye />
+                              </p>
+                            </td>
+                          </tr>
+                        </>
+                      );
+                    })
                     : null}
                   {real_estate_rent__tenant
                     ? real_estate_rent__tenant?.map((e, i) => {
-                        const date = new Date(e?.created_at.toString());
-                        const options = {
-                          year: "numeric",
-                          month: "2-digit",
-                          day: "2-digit",
-                          hour: "2-digit",
-                          minute: "2-digit",
-                          second: "2-digit",
-                        };
-                        const formattedDate = date.toLocaleString(
-                          "en-US",
-                          options
-                        );
-                        return (
-                          <>
-                            <tr>
-                              <td className="text-center">{e?.id}</td>
-                              <td className="text-center">Tenant</td>
-                              <td className="text-center">{formattedDate}</td>
-                              <td>
-                                <p
-                                  className="text-center"
-                                  style={{ cursor: "pointer" }}
-                                  onClick={() =>
-                                    history.push(
-                                      `/reviewapplication/review/${e.id}/new`
-                                    )
-                                  }
-                                >
-                                  View <FaEye />
-                                </p>
-                              </td>
-                            </tr>
-                          </>
-                        );
-                      })
+                      const date = new Date(e?.created_at.toString());
+                      const options = {
+                        year: "numeric",
+                        month: "2-digit",
+                        day: "2-digit",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        second: "2-digit",
+                      };
+                      const formattedDate = date.toLocaleString(
+                        "en-US",
+                        options
+                      );
+                      return (
+                        <>
+                          <tr>
+                            <td className="text-center">{e?.id}</td>
+                            <td className="text-center">Tenant</td>
+                            <td className="text-center">{formattedDate}</td>
+                            <td>
+                              <p
+                                className="text-center"
+                                style={{ cursor: "pointer" }}
+                                onClick={() =>
+                                  history.push(
+                                    `/reviewapplication/review/${e.id}/new`
+                                  )
+                                }
+                              >
+                                View <FaEye />
+                              </p>
+                            </td>
+                          </tr>
+                        </>
+                      );
+                    })
                     : null}
                 </tbody>
               </Table>
             </div>
           </div>
-          <div className="col-md-2"></div>
-          <ProfileInfo />
+          {/* <div className="col-md-2"></div> */}
+          <ProfileInfo/>
         </div>
       </div>
     </>
