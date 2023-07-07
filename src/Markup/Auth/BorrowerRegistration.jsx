@@ -25,7 +25,7 @@ const BorrowerRegistration = () => {
   const [password, setPassword] = useState("");
   const [firstname, setFirstname] = useState("");
   const [Code, setCode] = useState();
-  const [lastname, setLast_name] = useState("");
+  const [lastname, setLastname] = useState("");
   const [phone, setPhone] = useState("");
   const Data = new FormData();
   Data.append("email", email);
@@ -131,14 +131,15 @@ const BorrowerRegistration = () => {
         setLoader(true);
         console.log(response);
         // setLoginres(response?.data);
-        history.push("/");
+        localStorage.clear()
+        history.push("/Borrower/Login");
         console.log(response?.data?.data);
         // setToken(response?.data?.token);
-        localStorage.setItem("usertoken", response?.data?.token);
-        localStorage.setItem(
-          "userDetail",
-          JSON.stringify(response?.data?.data)
-        );
+        // localStorage.setItem("usertoken", response?.data?.token);
+        // localStorage.setItem(
+        //   "userDetail",
+        //   JSON.stringify(response?.data?.data)
+        // );
         if (response.data.status === true) {
           setLoader(false);
           //   setregistrationformShow(false)
@@ -207,11 +208,11 @@ const BorrowerRegistration = () => {
         setLoader(true);
         console.log(response);
         setVerficationResponse(response);
-        console.log(response?.data?.data);
+        // console.log(response?.data?.data);
         setFirstname(response?.data?.data?.name)
         setEmail(response?.data?.data?.receiver)
         setPhone(response?.data?.data?.phone)
-        // setLast_name(response?.data?.data?.name)
+        setLastname(response?.data?.data?.name)
         // setToken(response?.data?.token);
         // localStorage.setItem("usertoken", response?.data?.token);
         // localStorage.setItem(
@@ -334,7 +335,7 @@ const BorrowerRegistration = () => {
                           <label className="mb-2 fs-small" style={{color:"#34395e"}}>Last Name</label>
                           <div className="input-group">
                             <input
-                              onChange={(e) => setLast_name(e.target.value)}
+                              onChange={(e) => setLastname(e.target.value)}
                               required=""
                               // value={""}
                               placeholder="Your Last Name"
