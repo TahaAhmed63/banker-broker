@@ -141,6 +141,7 @@ const BorrowerRegistration = () => {
         //   JSON.stringify(response?.data?.data)
         // );
         if (response.data.status === true) {
+          
           setLoader(false);
           //   setregistrationformShow(false)
           Swal.fire({
