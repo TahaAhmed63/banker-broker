@@ -18,6 +18,7 @@ const Borrowerlogin = () => {
   const Data = new FormData();
   Data.append("email", email);
   Data.append("password", password);
+
   const Login = () => {
     setLoader(true);
 
@@ -81,7 +82,7 @@ const Borrowerlogin = () => {
 
         Swal.fire({
           toast: true,
-          icon: "success",
+          icon: "error",
           title: error?.response?.data?.message,
           animation: true,
           position: "top-right",
